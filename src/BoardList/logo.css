@@ -1,0 +1,15 @@
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  width: 225px;
+  height: 60px;
+}
+
+.logo-wrap {
+  height: 80px;
+  background-color: #333333;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

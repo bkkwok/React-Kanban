@@ -1,0 +1,8 @@
+.MainBodySplit {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
