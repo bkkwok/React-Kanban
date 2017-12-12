@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './MainBodySplit.css';
 
 class MainBodySplit extends Component {
   shouldComponentUpdate() {

@@ -1,0 +1,14 @@
+.BoardList {
+  width: 225px;
+  border-right: 1px solid #ccc;
+}
+
+.boardlist__add {
+  display: flex;
+  align-items: center;
+  font-size: .8em;
+  font-weight: 600;
+  color: #737373;
+  text-transform: uppercase;
+  margin-right: 20px;
+}

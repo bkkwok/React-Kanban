@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './BoardList.css';
-import './logo.css';
-import logo from './logo.svg';
+import plus from '../assets/plus.svg';
+import logo from '../assets/logo.svg';
 
 class BoardList extends Component {
   constructor() {
@@ -14,6 +13,8 @@ class BoardList extends Component {
         <div className="logo-wrap">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
+
+        <div className="boardlist__add">boards<img src={plus} className="plus-icon" alt="add board" /></div>
       </div>
     )
   }
