@@ -6,7 +6,7 @@
   height: 80px;
   background-color: #fff;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $gray;
 }
 
 .search-icon {
@@ -23,5 +23,5 @@
 }
 
 .search-input::placeholder {
-  color: #cccccc;
+  color: $light-gray;
 }

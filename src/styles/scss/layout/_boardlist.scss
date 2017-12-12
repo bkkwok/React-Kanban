@@ -1,6 +1,6 @@
 .BoardList {
   width: 225px;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid $gray;
 }
 
 .boardlist__add {
@@ -8,7 +8,7 @@
   align-items: center;
   font-size: .8em;
   font-weight: 600;
-  color: #737373;
+  color: $light-dark;
   text-transform: uppercase;
   margin-right: 20px;
 }

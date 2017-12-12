@@ -446,9 +446,10 @@ html, body, #root {
   margin-left: 1em; }
 
 .search-input::placeholder {
-  color: #cccccc; }
+  color: #e6e6e6; }
 
 .plus-icon {
+  cursor: pointer;
   height: 25px; }
 
 .App-logo {
@@ -460,7 +461,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   height: 80px;
-  background-color: #333333; }
+  background-color: #333; }
 
 @keyframes App-logo-spin {
   from {
