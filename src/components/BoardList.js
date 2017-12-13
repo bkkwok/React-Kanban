@@ -13,8 +13,14 @@ class BoardList extends Component {
         <div className="logo-wrap">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-
-        <div className="boardlist__add">boards<img src={plus} className="plus-icon" alt="add board" /></div>
+        <div className="boardlist-content">
+          <div className="boardlist-title">
+            <div className="bold-text icon-right">
+              boards
+            </div>
+            <img src={plus} className="plus-icon" alt="add board" />
+          </div>
+        </div>
       </div>
     )
   }

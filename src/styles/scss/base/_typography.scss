@@ -1,3 +1,14 @@
 body {
   font-family: sans-serif;
 }
+
+.bold-text {
+  color: $light-dark;
+  font-size: .8em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.icon-right {
+  margin-right: 40px;
+}

@@ -3,12 +3,12 @@
   border-right: 1px solid $gray;
 }
 
-.boardlist__add {
+.boardlist-content {
+  padding: 45px 30px;
+}
+
+.boardlist-title {
   display: flex;
   align-items: center;
-  font-size: .8em;
-  font-weight: 600;
-  color: $light-dark;
-  text-transform: uppercase;
-  margin-right: 20px;
+  margin-bottom: 30px;
 }

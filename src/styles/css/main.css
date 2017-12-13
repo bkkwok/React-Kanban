@@ -392,6 +392,15 @@ template {
 body {
   font-family: sans-serif; }
 
+.bold-text {
+  color: #737373;
+  font-size: .8em;
+  font-weight: 600;
+  text-transform: uppercase; }
+
+.icon-right {
+  margin-right: 40px; }
+
 html, body, #root {
   height: 100%; }
 
@@ -407,14 +416,13 @@ html, body, #root {
   width: 225px;
   border-right: 1px solid #ccc; }
 
-.boardlist__add {
+.boardlist-content {
+  padding: 45px 30px; }
+
+.boardlist-title {
   display: flex;
   align-items: center;
-  font-size: .8em;
-  font-weight: 600;
-  color: #737373;
-  text-transform: uppercase;
-  margin-right: 20px; }
+  margin-bottom: 30px; }
 
 .MainBodySplit {
   display: -webkit-flex;
