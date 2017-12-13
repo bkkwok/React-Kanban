@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainBodySplit from './MainBodySplit';
-import BoardList from './BoardList';
+import BoardList from './Boardlist';
 import Board from './Board';
 
 class App extends Component {

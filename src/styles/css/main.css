@@ -456,9 +456,10 @@ html, body, #root {
 .search-input::placeholder {
   color: #e6e6e6; }
 
-.plus-icon {
+.btn-icon {
   cursor: pointer;
-  height: 25px; }
+  height: 25px;
+  padding: 5px; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
