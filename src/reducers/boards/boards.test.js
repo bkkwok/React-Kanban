@@ -1,4 +1,4 @@
-import reducer from "./boards";
+import reducer from "./";
 import omit from "lodash.omit";
 import { ADD_BOARD, DEL_BOARD } from "../../actions/types";
 
