@@ -412,7 +412,7 @@ input {
   width: 100%; }
 
 .Board {
-  background-color: #e6e6e6;
+  background-color: #f2f2f2;
   width: 100%; }
 
 .BoardList {
@@ -461,7 +461,7 @@ input {
   margin-left: 1em; }
 
 .search-input::placeholder {
-  color: #e6e6e6; }
+  color: #f2f2f2; }
 
 .btn-icon {
   cursor: pointer;
