@@ -1,6 +1,4 @@
-export const ADD_BOARD = "ADD_BOARD";
-export const DEL_BOARD = "DEL_BOARD";
-
+import { ADD_BOARD, DEL_BOARD } from './types';
 let currentId = 0;
 
 export function addBoard(name) {
