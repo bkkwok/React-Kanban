@@ -7,7 +7,6 @@ export default function boards(state = {}, action) {
     case ADD_BOARD:
       return { ...state, [action.id]: { ...action.board } };
     case DEL_BOARD:
-    console.log('deleteing', action.id)
       return omit(state, action.id);
     default: return state;
   }
