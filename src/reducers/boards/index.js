@@ -1,4 +1,4 @@
-import { ADD_BOARD, DEL_BOARD } from "../actions/boards";
+import { ADD_BOARD, DEL_BOARD } from "../../actions/boards";
 import omit from 'lodash.omit';
 
 
