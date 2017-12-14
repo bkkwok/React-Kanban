@@ -24,8 +24,7 @@ class AddBoardInput extends Component {
 
   handleSubmit(e) {
     if (e.keyCode === 13) {
-      //call redux action
-      console.log(this.state.value);
+      this.props.handleAddBoard(this.state.value);
     }
   }
 
