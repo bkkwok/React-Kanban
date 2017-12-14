@@ -10,5 +10,10 @@
 .boardlist-title {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.boardlist__input {
+  min-width: 100%;
+  max-width: 100%;
 }

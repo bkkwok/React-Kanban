@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import AddMinusIcon from './AddMinusIcon';
-import classNames from "classnames";
+import AddMinusIcon from "./AddMinusIcon";
+import AddBoardInput from "./AddBoardInput";
 import logo from "../../assets/logo.svg";
 
 class BoardList extends Component {
   constructor() {
     super();
+
     this.state = {
       isAddingBoard: false
     };
@@ -22,6 +23,7 @@ class BoardList extends Component {
   }
 
   render() {
+    const { isAddingBoard } = this.state;
     return (
       <div className="BoardList">
         <div className="logo-wrap">
@@ -30,8 +32,12 @@ class BoardList extends Component {
         <div className="boardlist-content">
           <div className="boardlist-title">
             <div className="bold-text icon-right">boards</div>
-            <AddMinusIcon onClick={this.handleAddBoard} isAddingBoard={this.state.isAddingBoard}/>
+            <AddMinusIcon
+              onClick={this.handleAddBoard}
+              isAddingBoard={isAddingBoard}
+            />
           </div>
+          {isAddingBoard && <AddBoardInput />}
         </div>
       </div>
     );

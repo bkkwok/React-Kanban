@@ -404,6 +404,9 @@ body {
 html, body, #root {
   height: 100%; }
 
+input {
+  box-sizing: border-box; }
+
 .App {
   height: 100%;
   width: 100%; }
@@ -422,7 +425,11 @@ html, body, #root {
 .boardlist-title {
   display: flex;
   align-items: center;
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
+
+.boardlist__input {
+  min-width: 100%;
+  max-width: 100%; }
 
 .MainBodySplit {
   display: -webkit-flex;
