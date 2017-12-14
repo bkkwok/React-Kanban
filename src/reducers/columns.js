@@ -1,4 +1,4 @@
-import { ADD_COLUMN, DEL_COLUMN } from "../../actions/types";
+import { ADD_COLUMN, DEL_COLUMN } from "../actions/types";
 import omit from "lodash.omit";
 
 export default function columns(state = {}, action) {

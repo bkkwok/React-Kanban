@@ -1,5 +1,5 @@
-import { ADD_COLUMN, DEL_COLUMN } from "../../actions/types";
-import reducer from "./";
+import { ADD_COLUMN, DEL_COLUMN } from "../actions/types";
+import reducer from "./columns";
 import omit from "lodash.omit";
 
 function createState() {

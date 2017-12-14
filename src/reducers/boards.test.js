@@ -1,6 +1,6 @@
-import reducer from "./";
+import reducer from "./boards";
 import omit from "lodash.omit";
-import { ADD_BOARD, DEL_BOARD } from "../../actions/types";
+import { ADD_BOARD, DEL_BOARD } from "../actions/types";
 
 function createState() {
   return {
