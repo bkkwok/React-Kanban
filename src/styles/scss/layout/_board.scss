@@ -1,4 +1,5 @@
 .Board {
-  background-color: $lighter-gray;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }

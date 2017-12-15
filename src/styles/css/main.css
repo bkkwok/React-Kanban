@@ -412,7 +412,8 @@ input {
   width: 100%; }
 
 .Board {
-  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
   width: 100%; }
 
 .BoardList {
@@ -447,7 +448,8 @@ input {
   height: 80px;
   background-color: #fff;
   align-items: center;
-  border-bottom: 1px solid #ccc; }
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0; }
 
 .search-icon {
   height: 30px;
@@ -462,6 +464,10 @@ input {
 
 .search-input::placeholder {
   color: #d9d9d9; }
+
+.boardview {
+  height: 100%;
+  background-color: #f2f2f2; }
 
 .btn-icon {
   cursor: pointer;

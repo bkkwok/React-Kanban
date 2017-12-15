@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import SearchBar from './SearchBar';
+import React, { Component } from "react";
+import SearchBar from "./SearchBar";
+import BoardView from "./BoardView";
 
 class Board extends Component {
   constructor() {
@@ -10,8 +11,9 @@ class Board extends Component {
     return (
       <div className="Board">
         <SearchBar />
+        <BoardView />
       </div>
-    )
+    );
   }
 }
 
