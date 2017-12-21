@@ -5,10 +5,12 @@ import omit from "lodash.omit";
 function createState() {
   return {
     "1": {
+      id: 1,
       name: "inProgress",
       tasks: [1, 2]
     },
     "2": {
+      id: 2,
       name: "done",
       tasks: [3, 4]
     }
@@ -19,11 +21,10 @@ describe("Column Reducer", function() {
   it("should handle ADD_COLUMN action", function() {
     const actual = reducer(createState(), {
       type: ADD_COLUMN,
-      id: 3,
-      column: { name: "toDo", tasks: [] }
+      column: { id: 3, name: "toDo", tasks: [] }
     });
     const expected = Object.assign(createState(), {
-      "3": { name: "toDo", tasks: [] }
+      "3": { id: 3, name: "toDo", tasks: [] }
     });
 
     expect(actual).toEqual(expected);

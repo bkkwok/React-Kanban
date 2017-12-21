@@ -5,10 +5,12 @@ import { ADD_BOARD, DEL_BOARD } from "../actions/types";
 function createState() {
   return {
     "1": {
+      id: 1,
       name: "Tasks",
       columns: [1, 2]
     },
     "2": {
+      id: 2,
       name: "ToDo",
       columns: [3, 4]
     }
@@ -19,14 +21,14 @@ describe("Board Reducer", function() {
   it("should handle ADD_BOARD action", function() {
     const actual = reducer(createState(), {
       type: ADD_BOARD,
-      id: 3,
       board: {
+        id: 3,
         name: "Progress",
         columns: []
       }
     });
     const expected = Object.assign(createState(), {
-      "3": { name: "Progress", columns: [] }
+      "3": { id: 3, name: "Progress", columns: [] }
     });
     expect(actual).toEqual(expected);
   });

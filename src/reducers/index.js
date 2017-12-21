@@ -1,34 +1,32 @@
 import { combineReducers } from "redux";
-import boards from "./boards";
-import columns from "./columns";
-import boardView from "./boardView";
-import tasks from "./tasks";
+import boards, * as fromBoards from "./boards";
+import columns, * as fromColumns from "./columns";
+import tasks, * as fromTasks from "./tasks";
 
 export default combineReducers({
-  boardView,
   boards,
   columns,
   tasks
 });
 
 function isEmpty(obj) {
-  return Object.keys(obj).length === 0 && obj.constructor === Object
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
 }
 
-export const selectBoard = state => {
-  let board = { ...state.boards[state.boardView.currentBoard] };
+export const allBoardsSelector = state => fromBoards.getAllBoards(state);
 
-  if(isEmpty(board)) return null;
+export const boardSelector = (state, id) => fromBoards.getBoard(state, id);
 
-  board.columns = board.columns.map(id => {
-    return { id: id, ...state.columns[id] };
-  });
+export const columnsPerBoardSelector = (state, boardId) => {
+  let board = fromBoards.getBoard(state, boardId);
 
-  board.columns.forEach(col => {
-    col.tasks = col.tasks.map(id => {
-      return { id: id, ...state.tasks[id] };
-    });
-  });
+  if(board) {
+    return board.columns.map(colId => fromColumns.getColumn(state, colId))
+  }
 
-  return board;
-};
+  return null;
+}
+
+export const tasksPerColumnSelector = (state, colId) => {
+  return fromColumns.getColumn(state, colId).tasks.map(taskId => fromTasks.getTask(state, taskId))
+}

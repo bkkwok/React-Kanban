@@ -1,11 +1,11 @@
 import { ADD_BOARD, DEL_BOARD } from './types';
-let currentId = 0;
+let currentId = 1;
 
 export function addBoard(name) {
   return {
     type: ADD_BOARD,
-    id: ++currentId,
     board: {
+      id: ++currentId,
       name: name,
       columns: []
     }
