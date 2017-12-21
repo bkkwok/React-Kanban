@@ -2,7 +2,6 @@ import * as selector from "./";
 
 function createState() {
   return {
-    boardView: { currentBoard: "1" },
     boards: {
       "1": { id: 1, name: "Task Board", columns: [1, 2] }
     },
