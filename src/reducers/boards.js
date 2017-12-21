@@ -14,7 +14,7 @@ export default function boards(state = initialState, action) {
     case ADD_BOARD:
       return { ...state, [action.board.id]: { ...action.board } };
     case DEL_BOARD:
-      return omit(state, action.id);
+      return omit(state, action.boardId);
     default: return state;
   }
 }

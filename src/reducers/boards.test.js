@@ -34,7 +34,7 @@ describe("Board Reducer", function() {
   });
 
   it("should handle DEL_BOARD action", function() {
-    const actual = reducer(createState(), { type: DEL_BOARD, id: 1 });
+    const actual = reducer(createState(), { type: DEL_BOARD, boardId: 1 });
     const expected = omit(createState(), "1");
     expect(actual).toEqual(expected);
   });

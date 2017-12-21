@@ -1,5 +1,6 @@
 import * as action from "./boards";
 import * as TYPE from "./types";
+import { createState } from "../reducers/selectors.test";
 
 describe("board actions", function() {
   it("addBoard", function() {
@@ -19,11 +20,13 @@ describe("board actions", function() {
     expect(actual).toEqual(expected);
   });
 
-  it("deleteBoard", function() {
-    const actual = action.deleteBoard(1);
+  it("getIdsWithBoard", function() {
+    const actual = action.getIdsWithBoard(createState(), 1);
     const expected = {
       type: TYPE.DEL_BOARD,
-      id: 1
+      boardId: 1,
+      columnIds: [1, 2],
+      taskIds: [1, 2, 3]
     };
 
     expect(actual).toEqual(expected);

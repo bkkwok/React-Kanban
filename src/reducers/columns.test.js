@@ -30,7 +30,7 @@ describe("Column Reducer", function() {
     expect(actual).toEqual(expected);
   });
   it("should handle DEL_COLUMN action", function() {
-    const actual = reducer(createState(), { type: DEL_COLUMN, id: 1 });
+    const actual = reducer(createState(), { type: DEL_COLUMN, columnId: 1 });
     const expected = omit(createState(), "1");
 
     expect(actual).toEqual(expected);

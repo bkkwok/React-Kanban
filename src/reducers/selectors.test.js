@@ -1,9 +1,10 @@
 import * as selector from "./";
 
-function createState() {
+export function createState() {
   return {
     boards: {
-      "1": { id: 1, name: "Task Board", columns: [1, 2] }
+      "1": { id: 1, name: "Task Board", columns: [1, 2] },
+      "2": { id: 2, name: "ToDo Board", columns: [3] }
     },
     columns: {
       "1": {
@@ -15,6 +16,11 @@ function createState() {
         id: 2,
         name: "done",
         tasks: [3]
+      },
+      "3": {
+        id: 3,
+        name: "todo",
+        tasks: []
       }
     },
     tasks: {

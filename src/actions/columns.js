@@ -13,9 +13,20 @@ export function addColumn(name) {
   };
 }
 
-export function deleteColumn(id) {
+export function getIdsWithColumn(state, id) {
+  const { tasks } = state.columns[id];
+
   return {
     type: DEL_COLUMN,
-    id: id
-  }
+    columnId: id,
+    taskIds: tasks
+  };
+}
+
+export function deleteColumn(id) {
+  return (dispatch, getState) => {
+    const action = getIdsWithColumn(getState(), id);
+
+    dispatch(action);
+  };
 }

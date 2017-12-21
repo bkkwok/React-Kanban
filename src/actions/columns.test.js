@@ -1,5 +1,6 @@
 import * as action from "./columns";
 import * as TYPE from "./types";
+import { createState } from "../reducers/selectors.test";
 
 describe("column actions", function() {
   it("addColumn", function() {
@@ -18,12 +19,12 @@ describe("column actions", function() {
     expect(actual).toEqual(expected);
   });
 
-  it("deleteColumn", function() {
-    const actual = action.deleteColumn(1);
-
+  it("getIdsWithColumn", function() {
+    const actual = action.getIdsWithColumn(createState(), 1);
     const expected = {
       type: TYPE.DEL_COLUMN,
-      id: 1
+      columnId: 1,
+      taskIds: [1, 2]
     };
 
     expect(actual).toEqual(expected);
