@@ -27,7 +27,14 @@ class BoardView extends Component {
     if (!board) {
       return <Redirect to={from} />;
     }
-    return <div className="boardview">{this.renderColumns(columns)}</div>;
+    return (
+      <div className="boardview">
+        <div className="boardview__header">
+          <div className="boardview__name">{board.name}</div>
+        </div>
+        <div className="columnsContainer">{this.renderColumns(columns)}</div>
+      </div>
+    );
   }
 }
 

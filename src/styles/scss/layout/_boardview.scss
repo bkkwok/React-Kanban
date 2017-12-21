@@ -1,4 +1,12 @@
 .boardview {
-  height: 100%;
-  background-color: $lighter-gray;
+  padding: 35px 55px;
+}
+
+.boardview__header {
+  margin-bottom: 30px;
+}
+
+.boardview__name {
+  font-size: 2em;
+  font-weight: 600;
 }

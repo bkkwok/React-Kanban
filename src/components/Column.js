@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { tasksPerColumnSelector } from "../reducers";
 import Task from "./Task";
+import add_icon from '../assets/add.svg';
 
 class Column extends Component {
   constructor() {
@@ -16,10 +17,17 @@ class Column extends Component {
 
   render() {
     const { tasks } = this.props;
-    console.log("column props", this.props);
-    return <div>{this.props.name}
-      {this.renderTasks(tasks)}
-    </div>;
+
+    return (
+      <div className="column">
+        <div className="column__content">
+          <div className="column__title">{this.props.name}</div>
+          <div className="column__addButton"><img src={add_icon} className="add-task-icon" alt="addTask" /></div>
+          <div className="column__tasks">{this.renderTasks(tasks)}</div>
+
+        </div>
+      </div>
+    );
   }
 }
 
