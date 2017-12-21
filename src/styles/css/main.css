@@ -401,20 +401,23 @@ body {
 .icon-right {
   margin-right: 40px; }
 
-html, body, #root {
+html, body, #root, .app-wrap, .App {
   height: 100%; }
 
 input {
   box-sizing: border-box; }
 
 .App {
-  height: 100%;
   width: 100%; }
 
 .Board {
   display: flex;
   flex-direction: column;
   width: 100%; }
+
+.Board__Main {
+  height: 100%;
+  background-color: #f2f2f2; }
 
 .BoardList {
   width: 225px;

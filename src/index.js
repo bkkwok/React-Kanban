@@ -1,15 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import { Provider } from "react-redux";
 import createStore from "./createStore";
 import "./styles/css/main.css";
-import App from "./components/App";
+import Root from "./components/Root";
 import registerServiceWorker from "./registerServiceWorker";
 
 render(
-  <Provider store={createStore()}>
-    <App />
-  </Provider>,
+  <Root store={createStore()} />,
   document.getElementById("root")
 );
 
