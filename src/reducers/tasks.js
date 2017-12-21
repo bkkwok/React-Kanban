@@ -1,18 +1,22 @@
+import { ADD_TASK, DEL_TASK } from "../actions/types";
+import omit from "lodash/omit";
 
-let fakeState = {
-  '0': {
-    id: 0,
-    task: 'more styles',
-    priority: 'low'
-  }
-}
-
-export default function tasks(state = fakeState, action) {
-  switch(action.type) {
-    default: return state;
+export default function tasks(state = {}, action) {
+  switch (action.type) {
+    case ADD_TASK:
+      return {
+        ...state,
+        [action.task.id]: {
+          ...action.task
+        }
+      };
+    case DEL_TASK:
+      return omit(state, action.id);
+    default:
+      return state;
   }
 }
 
 export const getTask = (state, id) => {
-  return state.tasks[id]
-}
+  return state.tasks[id];
+};

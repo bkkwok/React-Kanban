@@ -5,7 +5,7 @@ const defaultState = {
   '0': {
     id: 0,
     name: "inProgress",
-    tasks: [0]
+    tasks: []
   },
   '1': {
     id: 1,
