@@ -2,9 +2,10 @@ import { ADD_TASK, DEL_TASK } from "./types";
 
 let currentId = 1;
 
-export function addTask(name, priority) {
+export function addTask(columnId, name, priority) {
   return {
     type: ADD_TASK,
+    columnId: columnId,
     task: {
       id: ++currentId,
       task: name,
@@ -13,9 +14,10 @@ export function addTask(name, priority) {
   };
 }
 
-export function deleteTask(id) {
+export function deleteTask(columnId, id) {
   return {
     type: DEL_TASK,
-    id: id
+    columnId: columnId,
+    taskId: id
   };
 }

@@ -3,10 +3,12 @@ import * as action from "./tasks";
 
 describe("task actions", function() {
   it("addTask", function() {
-    const actual = action.addTask("add more styles", "low");
+    const actual = action.addTask(1, "add more styles", "low");
     actual.task.id = !!actual.task.id;
+
     const expected = {
       type: TYPE.ADD_TASK,
+      columnId: 1,
       task: {
         id: true,
         task: "add more styles",
@@ -15,11 +17,13 @@ describe("task actions", function() {
     };
     expect(actual).toEqual(expected);
   });
+
   it("deleteTask", function() {
-    const actual = action.deleteTask(1);
+    const actual = action.deleteTask(2, 1);
     const expected = {
       type: TYPE.DEL_TASK,
-      id: 1
+      columnId: 2,
+      taskId: 1
     };
 
     expect(actual).toEqual(expected);
