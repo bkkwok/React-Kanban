@@ -1,6 +1,6 @@
 import reducer from "./";
 import { getIdsWithBoard } from "../actions/boards";
-import { getIdsWithColumn } from "../actions/columns";
+import { getColumnTaskIds, delColumn } from "../actions/columns";
 import { createState } from "./selectors.test";
 
 it("deleteBoard action should delete all ids associated with the given boardId", function() {
@@ -29,9 +29,14 @@ it("deleteBoard action should delete all ids associated with the given boardId",
 
 it("deleteColumn action should delete all ids associated with the given columnId", function() {
   const state = createState();
-  const action = getIdsWithColumn(state, 1);
+  const taskIds = getColumnTaskIds(state, 1);
+  const action = delColumn(1, 1, taskIds);
   const actual = reducer(createState(), action);
-  const expected = Object.assign(state, {
+  const expected = {
+    boards: {
+      "1": { id: 1, name: "Task Board", columns: [2] },
+      "2": { id: 2, name: "ToDo Board", columns: [3] }
+    },
     columns: {
       "2": {
         id: 2,
@@ -51,7 +56,7 @@ it("deleteColumn action should delete all ids associated with the given columnId
         priority: "high"
       }
     }
-  });
+  };
 
   expect(actual).toEqual(expected);
 });

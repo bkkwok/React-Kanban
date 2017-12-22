@@ -1,4 +1,4 @@
-import { ADD_COLUMN, DEL_COLUMN, ADD_TASK, DEL_TASK } from "../actions/types";
+import { DEL_BOARD, ADD_COLUMN, DEL_COLUMN, ADD_TASK, DEL_TASK } from "../actions/types";
 import reducer from "./columns";
 import omit from "lodash.omit";
 
@@ -18,9 +18,21 @@ function createState() {
 }
 
 describe("Column Reducer", function() {
+  it("should handle DEL_BOARD action", function() {
+    const actual = reducer(createState(), {
+      type: DEL_BOARD,
+      boardId: "n/a",
+      columnIds: [1, 2],
+      taskIds: "n/a"
+    });
+
+    expect(actual).toEqual({});
+  });
+
   it("should handle ADD_COLUMN action", function() {
     const actual = reducer(createState(), {
       type: ADD_COLUMN,
+      boardId: 1,
       column: { id: 3, name: "toDo", tasks: [] }
     });
     const expected = Object.assign(createState(), {
@@ -29,8 +41,13 @@ describe("Column Reducer", function() {
 
     expect(actual).toEqual(expected);
   });
+
   it("should handle DEL_COLUMN action", function() {
-    const actual = reducer(createState(), { type: DEL_COLUMN, columnId: 1 });
+    const actual = reducer(createState(), {
+      type: DEL_COLUMN,
+      boardId: 1,
+      columnId: 1
+    });
     const expected = omit(createState(), "1");
 
     expect(actual).toEqual(expected);

@@ -1,4 +1,4 @@
-import { ADD_TASK, DEL_TASK } from "../actions/types";
+import { DEL_BOARD, DEL_COLUMN, ADD_TASK, DEL_TASK } from "../actions/types";
 import reducer from "./tasks";
 import omit from "lodash/omit";
 
@@ -18,6 +18,28 @@ function createState() {
 }
 
 describe("Task Reducer", function() {
+  it("should handle DEL_BOARD action", function() {
+    const actual = reducer(createState(), {
+      type: DEL_BOARD,
+      boardId: "n/a",
+      columnIds: "n/a",
+      taskIds: [1, 2]
+    });
+
+    expect(actual).toEqual({});
+  });
+
+  it("should handle DEL_COLUMN action", function() {
+    const actual = reducer(createState(), {
+      type: DEL_COLUMN,
+      boardId: "n/a",
+      columnIds: "n/a",
+      taskIds: [1, 2]
+    });
+
+    expect(actual).toEqual({});
+  });
+
   it("should handle ADD_TASK action", function() {
     const actual = reducer(createState(), {
       type: ADD_TASK,
