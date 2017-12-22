@@ -2,9 +2,10 @@ import { ADD_COLUMN, DEL_COLUMN } from "./types";
 
 let currentId = 1;
 
-export function addColumn(name) {
+export function addColumn(boardId, name) {
   return {
     type: ADD_COLUMN,
+    boardId: boardId,
     column: {
       id: ++currentId,
       name: name,
@@ -13,20 +14,23 @@ export function addColumn(name) {
   };
 }
 
-export function getIdsWithColumn(state, id) {
-  const { tasks } = state.columns[id];
-
+export function delColumn(boardId, columnId, taskIds) {
   return {
     type: DEL_COLUMN,
-    columnId: id,
-    taskIds: tasks
+    boardId: boardId,
+    columnId: columnId,
+    taskIds: taskIds
   };
 }
 
-export function deleteColumn(id) {
-  return (dispatch, getState) => {
-    const action = getIdsWithColumn(getState(), id);
+export function getColumnTaskIds(state, columnId) {
+  return state.columns[columnId].tasks;
+}
 
-    dispatch(action);
+export function deleteColumn(boardId, columnId) {
+  return (dispatch, getState) => {
+    const taskIds = getColumnTaskIds(getState(), columnId);
+
+    dispatch(delColumn(boardId, columnId, taskIds));
   };
 }
