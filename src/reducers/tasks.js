@@ -15,7 +15,7 @@ export default function tasks(state = {}, action) {
         }
       };
     case DEL_TASK:
-      return omit(state, action.id);
+      return omit(state, action.taskId);
     default:
       return state;
   }

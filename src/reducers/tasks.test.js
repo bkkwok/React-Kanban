@@ -21,6 +21,7 @@ describe("Task Reducer", function() {
   it("should handle ADD_TASK action", function() {
     const actual = reducer(createState(), {
       type: ADD_TASK,
+      columnId: 1,
       task: { id: 3, task: "erase styles", priority: "high" }
     });
 
@@ -34,7 +35,8 @@ describe("Task Reducer", function() {
   it("should handle DEL_TASK action", function() {
     const actual = reducer(createState(), {
       type: DEL_TASK,
-      id: 1
+      columnId: 2,
+      taskId: 1
     });
 
     const expected = omit(createState(), "1");
