@@ -39,7 +39,6 @@ export default function columns(state = defaultState, action) {
 
 export const addTask = (state, action) => {
   let column = state[action.columnId];
-  console.log("reducer", action)
   return {
     ...state,
     [action.columnId]: {
