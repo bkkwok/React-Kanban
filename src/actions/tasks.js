@@ -2,13 +2,13 @@ import { ADD_TASK, DEL_TASK } from "./types";
 
 let currentId = 1;
 
-export function addTask(columnId, name, priority) {
+export function addTask(columnId, task, priority) {
   return {
     type: ADD_TASK,
     columnId: columnId,
     task: {
       id: ++currentId,
-      task: name,
+      task: task,
       priority: priority
     }
   };
