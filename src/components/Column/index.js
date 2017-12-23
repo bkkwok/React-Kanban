@@ -34,7 +34,6 @@ class Column extends Component {
 
   handleAddTask(task, priority) {
     const { addTask, id } = this.props;
-
     addTask(id, task, priority);
   }
 

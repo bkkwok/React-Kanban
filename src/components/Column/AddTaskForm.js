@@ -18,9 +18,9 @@ class AddTaskForm extends Component {
   handleSubmit(e) {
     if (e.keyCode === 13) {
       const { value, priority } = this.state;
-      const { id, addTask, toggleAddTask } = this.props;
+      const { addTask, toggleAddTask } = this.props;
 
-      addTask(id, value, priority);
+      addTask(value, priority);
 
       this.setState({
         value: ""
