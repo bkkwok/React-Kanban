@@ -12,12 +12,10 @@ class BoardView extends Component {
   }
 
   renderColumns(columns) {
-    console.log(columns);
     return columns.map(col => <Column key={col.id} {...col} />);
   }
 
   render() {
-    console.log(this.props);
     const { from } = this.props.location.state || {
       from: { pathname: "/dashboard" }
     };
