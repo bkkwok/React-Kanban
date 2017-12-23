@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PriorityOption from "./PriorityOption";
-import TextArea from './TextArea';
+import TextArea from "./TextArea";
 
 class AddTaskForm extends Component {
   constructor() {
@@ -16,9 +16,16 @@ class AddTaskForm extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    if (e.keyCode === 13) {
+      const { value, priority } = this.state;
+      const { id, addTask, toggleAddTask } = this.props;
 
-    this.props.addTask(this.state.value);
+      addTask(id, value, priority);
+
+      this.setState({
+        value: ""
+      });
+    }
   }
 
   handleChange(e) {
@@ -33,7 +40,7 @@ class AddTaskForm extends Component {
     const { value, priority } = this.state;
 
     return (
-      <form className="AddTaskForm" onSubmit={this.handleSubmit}>
+      <form className="AddTaskForm" onSubmit={e => e.preventDefault()}>
         <div className="AddTaskForm__priorities">
           <PriorityOption
             selected={priority}
@@ -51,11 +58,12 @@ class AddTaskForm extends Component {
             togglePriority={this.handleToggle}
           />
         </div>
-            <TextArea
+        <TextArea
           autoFocus
           className="autogrow_textarea"
           value={value}
           onChange={this.handleChange}
+          onKeyUp={this.handleSubmit}
         />
       </form>
     );

@@ -63,7 +63,12 @@ export const mapStateToProps = (state, props) => {
   };
 };
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators(addTask, dispatch);
+export const mapDispatchToProps = dispatch => {
+  return {
+    addTask: (columnId, task, priority) => {
+      dispatch(addTask(columnId, task, priority))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(Column);
+export default connect(mapStateToProps, mapDispatchToProps)(Column);

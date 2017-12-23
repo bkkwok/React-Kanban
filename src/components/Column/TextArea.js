@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class TextArea extends Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     this.element.addEventListener("input", function() {
       this.style.height = "auto";
