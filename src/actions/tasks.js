@@ -9,7 +9,8 @@ export function addTask(columnId, task, priority) {
     task: {
       id: ++currentId,
       task: task,
-      priority: priority
+      priority: priority,
+      timestamp: new Date(Date.now()).toLocaleDateString()
     }
   };
 }

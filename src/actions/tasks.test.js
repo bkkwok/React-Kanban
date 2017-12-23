@@ -5,14 +5,15 @@ describe("task actions", function() {
   it("addTask", function() {
     const actual = action.addTask(1, "add more styles", "low");
     actual.task.id = !!actual.task.id;
-
+    actual.task.timestamp = !!actual.task.timestamp;
     const expected = {
       type: TYPE.ADD_TASK,
       columnId: 1,
       task: {
         id: true,
         task: "add more styles",
-        priority: "low"
+        priority: "low",
+        timestamp: true
       }
     };
     expect(actual).toEqual(expected);
