@@ -1,4 +1,10 @@
-import { DEL_BOARD, DEL_COLUMN, ADD_TASK, DEL_TASK } from "../actions/types";
+import {
+  DEL_BOARD,
+  DEL_COLUMN,
+  ADD_TASK,
+  DEL_TASK,
+  EDIT_TASK
+} from "../actions/types";
 import reducer from "./tasks";
 import omit from "lodash/omit";
 
@@ -62,6 +68,24 @@ describe("Task Reducer", function() {
     });
 
     const expected = omit(createState(), "1");
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("should handle EDIT_TASK action", function() {
+    const actual = reducer(createState(), {
+      type: EDIT_TASK,
+      task: {
+        id: 1,
+        task: "remove styles",
+        priority: "medium"
+      }
+    });
+
+    const expected = {
+      ...createState(),
+      "1": { id: 1, task: "remove styles", priority: "medium" }
+    };
 
     expect(actual).toEqual(expected);
   });

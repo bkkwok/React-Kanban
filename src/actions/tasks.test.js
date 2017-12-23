@@ -29,4 +29,15 @@ describe("task actions", function() {
 
     expect(actual).toEqual(expected);
   });
+
+  it("editTask", function() {
+    expect(action.editTask(1, "remove styles", "high")).toEqual({
+      type: TYPE.EDIT_TASK,
+      task: {
+        id: 1,
+        task: "remove styles",
+        priority: "high"
+      }
+    });
+  });
 });

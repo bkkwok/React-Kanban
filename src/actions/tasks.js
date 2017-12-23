@@ -1,4 +1,4 @@
-import { ADD_TASK, DEL_TASK } from "./types";
+import { ADD_TASK, DEL_TASK, EDIT_TASK } from "./types";
 
 let currentId = 1;
 
@@ -21,4 +21,15 @@ export function deleteTask(columnId, id) {
     columnId: columnId,
     taskId: id
   };
+}
+
+export function editTask(id, task, priority) {
+  return {
+    type: EDIT_TASK,
+    task: {
+      id: id,
+      task: task,
+      priority: priority
+    }
+  }
 }
