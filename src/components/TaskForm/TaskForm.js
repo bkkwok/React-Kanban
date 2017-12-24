@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import PriorityOption from "./PriorityOption";
-import TextArea from "./TextArea";
+import TextArea from "../TextArea";
 
-class AddTaskForm extends Component {
-  constructor() {
-    super();
+class TaskForm extends Component {
+  constructor(props) {
+    super(props);
+
+    const { value, priority } = props;
+
     this.state = {
-      value: "",
-      priority: "low"
+      value: value || "",
+      priority: priority || "low"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +21,9 @@ class AddTaskForm extends Component {
   handleSubmit(e) {
     if (e.keyCode === 13) {
       const { value, priority } = this.state;
-      const { addTask, toggleAddTask } = this.props;
+      const { submitTask } = this.props;
 
-      addTask(value, priority);
+      submitTask(value, priority);
 
       this.setState({
         value: ""
@@ -40,8 +43,8 @@ class AddTaskForm extends Component {
     const { value, priority } = this.state;
 
     return (
-      <form className="AddTaskForm" onSubmit={e => e.preventDefault()}>
-        <div className="AddTaskForm__priorities">
+      <form className="TaskForm" onSubmit={e => e.preventDefault()}>
+        <div className="TaskForm__priorities">
           <PriorityOption
             selected={priority}
             level="low"
@@ -70,4 +73,4 @@ class AddTaskForm extends Component {
   }
 }
 
-export default AddTaskForm;
+export default TaskForm;

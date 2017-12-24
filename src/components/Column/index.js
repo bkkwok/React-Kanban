@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { tasksPerColumnSelector } from "../../reducers";
 import { addTask } from "../../actions/tasks";
 import AddTaskBtn from "./AddTaskBtn";
-import AddTaskForm from "./AddTaskForm";
+import TaskForm from "../TaskForm/TaskForm";
 import Task from "../Task";
 
 class Column extends Component {
@@ -48,7 +48,7 @@ class Column extends Component {
         <div className="column__content">
           <div className="column__title">{this.props.name}</div>
           <AddTaskBtn toggleAddTask={this.handleToggle} />
-          {isAddingTask && <AddTaskForm addTask={this.handleAddTask} />}
+          {isAddingTask && <TaskForm submitTask={this.handleAddTask} />}
           <div className="column__tasks">{this.renderTasks(tasks)}</div>
         </div>
       </div>

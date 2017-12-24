@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import ArrowIcon from "../assets/ArrowIcon";
+import TaskForm from "./TaskForm/TaskForm";
 import { connect } from "react-redux";
-import { deleteTask } from "../actions/tasks";
+import { bindActionCreators } from "redux";
+import * as taskActions from "../actions/tasks";
 import cn from "classnames";
 
 class Task extends Component {
@@ -9,11 +11,14 @@ class Task extends Component {
     super();
 
     this.state = {
-      isToggled: false
+      isDropDownToggled: false,
+      isEditting: false
     };
 
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    this.showEdit = this.showEdit.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
@@ -26,36 +31,57 @@ class Task extends Component {
   }
 
   handleOutsideClick() {
-    this.setState(function({ isToggled }) {
-      if (isToggled) return { isToggled: false };
+    this.setState(function({ isDropDownToggled }) {
+      if (isDropDownToggled) return { isDropDownToggled: false };
     });
   }
 
   toggleDropDown(e) {
     e.stopPropagation();
-    this.setState(({ isToggled }) => {
+    this.setState(({ isDropDownToggled }) => {
       return {
-        isToggled: !isToggled
+        isDropDownToggled: !isDropDownToggled
+      };
+    });
+  }
+
+  showEdit(e) {
+    this.setState(({ isEditting }) => {
+      return {
+        isEditting: true
       };
     });
   }
 
   handleDelete(e) {
-    const { delTask, id, colId } = this.props;
+    const { deleteTask, id, colId } = this.props;
 
-    delTask(colId, id);
+    deleteTask(colId, id);
+  }
+
+  handleEditSubmit(task, priority) {
+    const { editTask, id } = this.props;
+
+    editTask(id, task, priority);
+
+    this.setState(({ isEditting }) => {
+      return {
+        isEditting: false
+      };
+    });
   }
 
   render() {
-    console.log(this.props);
-    const { isToggled } = this.state;
-    const { task, priority, timestamp } = this.props;
+    const { isDropDownToggled, isEditting } = this.state;
+    const { task, priority, timestamp, editTask } = this.props;
     const classes = `task task_priority-${priority}`;
     const dropdownClass = cn("dropdown_content", {
-      "dropdown-active": isToggled
+      "dropdown-active": isDropDownToggled
     });
 
-    return (
+    return isEditting ? (
+      <TaskForm value={task} priority={priority} submitTask={this.handleEditSubmit}/>
+    ) : (
       <div className={classes}>
         <div className="task__timestamp">{timestamp}</div>
         <div className="task__task">{task}</div>
@@ -65,7 +91,9 @@ class Task extends Component {
             <div className="dropdown_link" onClick={this.handleDelete}>
               delete
             </div>
-            <div className="dropdown_link">edit</div>
+            <div className="dropdown_link" onClick={this.showEdit}>
+              edit
+            </div>
           </div>
         </div>
       </div>
@@ -73,12 +101,7 @@ class Task extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    delTask: (colId, taskId) => {
-      dispatch(deleteTask(colId, taskId));
-    }
-  };
-};
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators(taskActions, dispatch);
 
 export default connect(null, mapDispatchToProps)(Task);

@@ -506,11 +506,11 @@ input {
   align-items: center;
   justify-content: center; }
 
-.AddTaskForm {
+.TaskForm {
   margin-top: 10px;
   background-color: #fff; }
 
-.AddTaskForm__priorities {
+.TaskForm__priorities {
   display: flex;
   align-items: center;
   padding: 10px; }
