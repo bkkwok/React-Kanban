@@ -492,12 +492,6 @@ input {
   font-size: 1.1em;
   cursor: pointer; }
 
-.addColumn__input {
-  padding: 4px;
-  width: 100%; }
-  .addColumn__input::placeholder {
-    font-weight: 600; }
-
 .columnsContainer {
   display: flex;
   align-items: flex-start; }
@@ -526,6 +520,12 @@ input {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.column__input {
+  padding: 4px;
+  width: 100%; }
+  .column__input::placeholder {
+    font-weight: 600; }
 
 .TaskForm {
   margin-top: 10px;

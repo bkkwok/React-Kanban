@@ -75,7 +75,7 @@ class AddColumn extends Component {
           <input
             autoFocus
             placeholder="New Column"
-            className="addColumn__input"
+            className="column__input"
             type="text"
             value={columnName}
             onClick={e => e.stopPropagation()}

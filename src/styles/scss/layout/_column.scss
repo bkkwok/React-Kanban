@@ -30,3 +30,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.column__input {
+  padding: 4px;
+  width: 100%;
+
+  &::placeholder {
+    font-weight: 600;
+  }
+}
