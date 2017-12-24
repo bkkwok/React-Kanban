@@ -2,8 +2,8 @@
   position: relative;
   background-color: #fff;
   margin-top: 10px;
-  min-height: 100px;
-  padding: 10px 10px 5px;
+  min-height: 75px;
+  padding: 10px 10px 30px;
 
   &:hover .arrow-icon {
     fill: $dark;
@@ -30,6 +30,8 @@
 
 .task__task {
   font-weight: 600;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .dropdown_container {
