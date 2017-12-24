@@ -525,7 +525,7 @@ input {
   .priority_circle.priority_circle-low {
     background-color: #b3e0ff; }
     .priority_circle.priority_circle-low.selected, .priority_circle.priority_circle-low:hover {
-      background-color: blue; }
+      background-color: #3385ff; }
   .priority_circle.priority_circle-medium {
     background-color: #ccff99; }
     .priority_circle.priority_circle-medium.selected, .priority_circle.priority_circle-medium:hover {
@@ -547,6 +547,52 @@ input {
   overflow: hidden;
   min-height: 20px; }
 
+.task {
+  position: relative;
+  background-color: #fff;
+  margin-top: 10px;
+  min-height: 100px;
+  padding: 10px 10px 5px; }
+  .task:hover .arrow-icon {
+    fill: #333; }
+  .task.task_priority-low {
+    border-left: 7px solid #3385ff; }
+  .task.task_priority-medium {
+    border-left: 7px solid #00b300; }
+  .task.task_priority-high {
+    border-left: 7px solid #ff3333; }
+
+.task__timestamp {
+  color: #ccc;
+  padding: 0 10px 10px 0;
+  font-weight: 400; }
+
+.task__task {
+  font-weight: 600; }
+
+.dropdown_container {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  padding: 5px; }
+
+.dropdown_content {
+  display: none;
+  width: 75px;
+  background-color: #fff;
+  border: 1px solid #737373; }
+
+.dropdown-active {
+  display: block; }
+
+.dropdown_link {
+  padding: 5px; }
+  .dropdown_link:hover {
+    background-color: #ccc; }
+
 .btn-icon {
   cursor: pointer;
   height: 25px;
@@ -555,6 +601,11 @@ input {
 .add-task-icon {
   height: 15px;
   padding: 5px; }
+
+.icon-bottom-right {
+  position: absolute;
+  bottom: 5px;
+  right: 12px; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

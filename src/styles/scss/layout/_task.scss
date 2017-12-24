@@ -1,0 +1,62 @@
+.task {
+  position: relative;
+  background-color: #fff;
+  margin-top: 10px;
+  min-height: 100px;
+  padding: 10px 10px 5px;
+
+  &:hover .arrow-icon {
+    fill: $dark;
+  }
+
+  &.task_priority-low {
+    border-left: 7px solid $blue;
+  }
+
+  &.task_priority-medium {
+    border-left: 7px solid $green;
+  }
+
+  &.task_priority-high {
+    border-left: 7px solid $red;
+  }
+}
+
+.task__timestamp {
+  color: $gray;
+  padding: 0 10px 10px 0;
+  font-weight: 400;
+}
+
+.task__task {
+  font-weight: 600;
+}
+
+.dropdown_container {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  padding: 5px;
+}
+
+.dropdown_content {
+  display: none;
+  width: 75px;
+  background-color: #fff;
+  border: 1px solid $light-dark;
+}
+
+.dropdown-active {
+  display: block;
+}
+
+.dropdown_link {
+  padding: 5px;
+
+  &:hover {
+    background-color: $gray;
+  }
+}

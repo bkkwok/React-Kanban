@@ -21,7 +21,9 @@ class Column extends Component {
   }
 
   renderTasks(tasks) {
-    return tasks.map(task => <Task key={task.id} {...task} />);
+    const { id } = this.props;
+
+    return tasks.map(task => <Task key={task.id} colId={id} {...task} />);
   }
 
   handleToggle() {
