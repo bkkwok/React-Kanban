@@ -478,8 +478,29 @@ input {
   font-size: 2em;
   font-weight: 600; }
 
+.addColumn {
+  display: flex;
+  align-items: center; }
+
+.addColumn-icon {
+  height: 11px;
+  padding-right: 4px; }
+
+.addColumn__btn {
+  color: #737373;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer; }
+
+.addColumn__input {
+  padding: 4px;
+  width: 100%; }
+  .addColumn__input::placeholder {
+    font-weight: 600; }
+
 .columnsContainer {
-  display: flex; }
+  display: flex;
+  align-items: flex-start; }
 
 .column {
   box-sizing: border-box;

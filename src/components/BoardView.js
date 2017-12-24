@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Column from "./Column";
+import AddColumn from "./AddColumn";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { boardSelector, columnsPerBoardSelector } from "../reducers";
@@ -30,7 +31,10 @@ class BoardView extends Component {
         <div className="boardview__header">
           <div className="boardview__name">{board.name}</div>
         </div>
-        <div className="columnsContainer">{this.renderColumns(columns)}</div>
+        <div className="columnsContainer">
+          {this.renderColumns(columns)}
+          <AddColumn boardId={board.id} />
+        </div>
       </div>
     );
   }
