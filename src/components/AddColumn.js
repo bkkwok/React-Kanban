@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Input from "./Input";
 import { connect } from "react-redux";
 import { addColumn } from "../actions/columns";
 import add_icon from "../assets/add.svg";
@@ -8,22 +9,12 @@ class AddColumn extends Component {
     super();
 
     this.state = {
-      isAdding: false,
-      columnName: ""
+      isAdding: false
     };
 
     this.showInput = this.showInput.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("click", this.handleOutsideClick, false);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("click", this.handleOutsideClick, false);
+    this.hideInput = this.hideInput.bind(this);
+    this.handleInputSubmit = this.handleInputSubmit.bind(this);
   }
 
   showInput(e) {
@@ -36,34 +27,18 @@ class AddColumn extends Component {
     });
   }
 
-  handleOutsideClick(e) {
-    e.stopPropagation();
-
-    const { columnName } = this.state;
-    const { boardId, addColumn } = this.props;
-
-    if (columnName.length > 0) {
-      addColumn(boardId, columnName);
-    }
-
-    this.setState({ isAdding: false, columnName: "" });
+  hideInput() {
+    this.setState(({ isAdding }) => {
+      return {
+        isAdding: false
+      };
+    });
   }
 
-  handleChange(e) {
-    this.setState({ columnName: e.target.value });
-  }
-
-  handleSubmit(e) {
+  handleInputSubmit(columnName) {
     const { addColumn, boardId } = this.props;
-    const { columnName } = this.state;
 
-    if (e.keyCode === 13) {
-      if (columnName.length > 0) {
-        addColumn(boardId, columnName);
-      }
-
-      this.setState({ isAdding: false, columnName: "" });
-    }
+    addColumn(boardId, columnName);
   }
 
   render() {
@@ -72,15 +47,13 @@ class AddColumn extends Component {
     return (
       <div className="addColumn column">
         {isAdding ? (
-          <input
+          <Input
             autoFocus
             placeholder="New Column"
             className="column__input"
-            type="text"
             value={columnName}
-            onClick={e => e.stopPropagation()}
-            onChange={this.handleChange}
-            onKeyUp={this.handleSubmit}
+            submitFunc={this.handleInputSubmit}
+            hideInput={this.hideInput}
           />
         ) : (
           <div className="addColumn__btn" onClick={this.showInput}>
