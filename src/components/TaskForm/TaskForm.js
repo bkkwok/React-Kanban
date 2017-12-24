@@ -22,8 +22,10 @@ class TaskForm extends Component {
     if (e.keyCode === 13) {
       const { value, priority } = this.state;
       const { submitTask } = this.props;
+      //trim off enter key from value
+      const trimmedValue = value.substring(0, value.length - 1);
 
-      submitTask(value, priority);
+      submitTask(trimmedValue, priority);
 
       this.setState({
         value: ""

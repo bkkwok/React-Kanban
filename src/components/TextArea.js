@@ -1,17 +1,37 @@
 import React, { Component } from "react";
 
+const DEFAULT_HEIGHT = '20px';
+
 class TextArea extends Component {
+  constructor(props) {
+    super(props);
+
+    const { height } = props;
+
+    this.state = {
+      height: height || DEFAULT_HEIGHT
+    }
+
+    this.resizeTextArea = this.resizeTextArea.bind(this);
+  }
+
   componentDidMount() {
-    this.element.addEventListener("input", function() {
-      this.style.height = "auto";
-      this.style.height = this.scrollHeight + "px";
-      this.scrollTop = this.scrollHeight;
-      window.scrollTo(window.scrollLeft, this.scrollTop + this.scrollHeight);
-    });
+    this.resizeTextArea();
+
+    this.textArea.addEventListener("input", this.resizeTextArea, false);
+  }
+
+  resizeTextArea() {
+    const { scrollHeight, scrollTop } = this.textArea;
+
+    this.textArea.style.height = "auto";
+    this.textArea.style.height = scrollHeight + "px";
+    this.textArea.scrollTop = scrollHeight;
+    window.scrollTo(window.scrollLeft, scrollTop + scrollHeight);
   }
 
   render() {
-    return <textarea ref={el => (this.element = el)} {...this.props} />;
+    return <textarea ref={el => (this.textArea = el)} {...this.props} />
   }
 }
 
