@@ -64,7 +64,7 @@ class Input extends Component {
 
   render() {
     const props = this.getProps();
-    console.log(props);
+
     return (
       <input
         {...this.getProps()}
