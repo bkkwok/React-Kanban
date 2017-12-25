@@ -34,7 +34,7 @@
   word-wrap: break-word;
 }
 
-.dropdown_container {
+.task__dropdown_container {
   position: absolute;
   right: 15px;
   bottom: 5px;
@@ -42,23 +42,4 @@
   height: 15px;
   width: 15px;
   padding: 5px;
-}
-
-.dropdown_content {
-  display: none;
-  width: 75px;
-  background-color: #fff;
-  border: 1px solid $light-dark;
-}
-
-.dropdown-active {
-  display: block;
-}
-
-.dropdown_link {
-  padding: 5px;
-
-  &:hover {
-    background-color: $gray;
-  }
 }

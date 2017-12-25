@@ -593,7 +593,7 @@ input {
   white-space: pre-wrap;
   word-wrap: break-word; }
 
-.dropdown_container {
+.task__dropdown_container {
   position: absolute;
   right: 15px;
   bottom: 5px;

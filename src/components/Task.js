@@ -63,7 +63,7 @@ class Task extends Component {
       <div className={classes}>
         <div className="task__timestamp">{timestamp}</div>
         <div className="task__task">{task}</div>
-        <Dropdown icon={<ArrowIcon />}>
+        <Dropdown icon={<ArrowIcon />} containerClass="task__dropdown_container">
           <Link onClick={this.handleDelete}>Delete</Link>
           <Link onClick={this.showEdit}>Edit</Link>
         </Dropdown>

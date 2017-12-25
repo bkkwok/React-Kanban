@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class Dropdown extends Component {
   static propTypes: {
-    icon: PropTypes.any.isRequired,
+    icon: PropTypes.any.isRequired
   };
 
   state = {
@@ -30,7 +30,7 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { icon, children } = this.props;
+    const { icon, children, containerClass } = this.props;
     const { isActive } = this.state;
 
     const classes = cn("dropdown_content", {
@@ -38,7 +38,7 @@ class Dropdown extends Component {
     });
 
     return (
-      <div className="dropdown_container">
+      <div className={containerClass}>
         <div className="dropdown_toggle" onClick={this.toggleDropDown}>
           {icon}
         </div>
@@ -49,15 +49,3 @@ class Dropdown extends Component {
 }
 
 export default Dropdown;
-
-// <div className="dropdown_container">
-//   <ArrowIcon onClick={this.toggleDropDown} />
-//   <div className={dropdownClass} ref={el => (this.dropDown = el)}>
-//     <div className="dropdown_link" onClick={this.handleDelete}>
-//       delete
-//     </div>
-//     <div className="dropdown_link" onClick={this.showEdit}>
-//       edit
-//     </div>
-//   </div>
-// </div>;
