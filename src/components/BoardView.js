@@ -13,7 +13,7 @@ class BoardView extends Component {
   }
 
   renderColumns(columns) {
-    return columns.map(col => <Column key={col.id} {...col} />);
+    return columns.map(col => <Column key={col.id} boardId={this.props.board.id} {...col} />);
   }
 
   render() {
