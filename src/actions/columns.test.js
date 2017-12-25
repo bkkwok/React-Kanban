@@ -31,4 +31,17 @@ describe("column actions", function() {
 
     expect(actual).toEqual(expected);
   });
+
+  it("editColumn", function() {
+    const actual = action.editColumn(1, "new name");
+    const expected = {
+      type: TYPE.EDIT_COLUMN,
+      column: {
+        id: 1,
+        name: "new name"
+      }
+    };
+
+    expect(actual).toEqual(expected);
+  });
 });

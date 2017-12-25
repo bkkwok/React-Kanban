@@ -1,4 +1,4 @@
-import { ADD_COLUMN, DEL_COLUMN } from "./types";
+import { ADD_COLUMN, DEL_COLUMN, EDIT_COLUMN } from "./types";
 
 let currentId = 1;
 
@@ -21,6 +21,16 @@ export function delColumn(boardId, columnId, taskIds) {
     columnId: columnId,
     taskIds: taskIds
   };
+}
+
+export function editColumn(columnId, name) {
+  return {
+    type: EDIT_COLUMN,
+    column: {
+      id: columnId,
+      name: name
+    }
+  }
 }
 
 export function getColumnTaskIds(state, columnId) {

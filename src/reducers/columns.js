@@ -2,6 +2,7 @@ import {
   DEL_BOARD,
   ADD_COLUMN,
   DEL_COLUMN,
+  EDIT_COLUMN,
   ADD_TASK,
   DEL_TASK
 } from "../actions/types";
@@ -28,6 +29,14 @@ export default function columns(state = defaultState, action) {
       return { ...state, [action.column.id]: { ...action.column } };
     case DEL_COLUMN:
       return omit(state, action.columnId);
+    case EDIT_COLUMN:
+      return {
+        ...state,
+        [action.column.id]: {
+          ...state[action.column.id],
+          name: action.column.name
+        }
+      };
     case ADD_TASK:
       return addTask(state, action);
     case DEL_TASK:
