@@ -53,19 +53,17 @@ class BoardList extends Component {
         <div className="logo-wrap">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <div className="boardlist-content">
-          <div className="boardlist-title">
-            <div className="bold-text icon-right">boards</div>
-            <AddMinusIcon
-              onClick={this.toggleAddBoard}
-              isAddingBoard={isAddingBoard}
-            />
-          </div>
-          {isAddingBoard && (
-            <AddBoardInput handleAddBoard={this.handleAddBoard} />
-          )}
-          {boardItems}
+        <div className="boardlist-title">
+          <div className="bold-text icon-right">boards</div>
+          <AddMinusIcon
+            onClick={this.toggleAddBoard}
+            isAddingBoard={isAddingBoard}
+          />
         </div>
+        {isAddingBoard && (
+          <AddBoardInput handleAddBoard={this.handleAddBoard} />
+        )}
+        <div className="boardlist-content">{boardItems}</div>
       </div>
     );
   }

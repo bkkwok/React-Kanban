@@ -30,7 +30,6 @@ class AddBoardInput extends Component {
 
   render() {
     return (
-      <div>
         <input
           ref={node => this.input = node}
           type="text"
@@ -39,7 +38,6 @@ class AddBoardInput extends Component {
           onChange={this.handleChange}
           className="boardlist__input"
         />
-      </div>
     );
   }
 }

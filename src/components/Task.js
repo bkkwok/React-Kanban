@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ArrowIcon from "../assets/ArrowIcon";
 import TaskForm from "./TaskForm/TaskForm";
 import Dropdown from "./Dropdown/Dropdown";
-import Link from "./Dropdown/Link";
+import DropdownLink from "./Dropdown/DropdownLink";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../actions/tasks";
@@ -64,8 +64,8 @@ class Task extends Component {
         <div className="task__timestamp">{timestamp}</div>
         <div className="task__task">{task}</div>
         <Dropdown icon={<ArrowIcon />} containerClass="task__dropdown_container">
-          <Link onClick={this.handleDelete}>Delete</Link>
-          <Link onClick={this.showEdit}>Edit</Link>
+          <DropdownLink onClick={this.handleDelete}>Delete</DropdownLink>
+          <DropdownLink onClick={this.showEdit}>Edit</DropdownLink>
         </Dropdown>
       </div>
     );

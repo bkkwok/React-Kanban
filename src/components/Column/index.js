@@ -8,7 +8,7 @@ import AddTaskBtn from "./AddTaskBtn";
 import TaskForm from "../TaskForm/TaskForm";
 import Task from "../Task";
 import Dropdown from "../Dropdown/Dropdown";
-import Link from "../Dropdown/Link";
+import DropdownLink from "../Dropdown/DropdownLink";
 import ArrowIcon from "../../assets/ArrowIcon";
 import Input from "../Input";
 
@@ -79,8 +79,10 @@ class Column extends Component {
                   icon={<ArrowIcon />}
                   containerClass="column__dropdown"
                 >
-                  <Link onClick={this.showInput}>Rename</Link>
-                  <Link onClick={this.handleDelete}>Delete</Link>
+                  <DropdownLink onClick={this.showInput}>Rename</DropdownLink>
+                  <DropdownLink onClick={this.handleDelete}>
+                    Delete
+                  </DropdownLink>
                 </Dropdown>
               </div>
             </div>
