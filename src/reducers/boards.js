@@ -1,4 +1,10 @@
-import { ADD_BOARD, DEL_BOARD, ADD_COLUMN, DEL_COLUMN } from "../actions/types";
+import {
+  ADD_BOARD,
+  DEL_BOARD,
+  EDIT_BOARD,
+  ADD_COLUMN,
+  DEL_COLUMN
+} from "../actions/types";
 import omit from "lodash.omit";
 
 const initialState = {
@@ -15,6 +21,14 @@ export default function boards(state = initialState, action) {
       return { ...state, [action.board.id]: { ...action.board } };
     case DEL_BOARD:
       return omit(state, action.boardId);
+    case EDIT_BOARD:
+      return {
+        ...state,
+        [action.board.id]: {
+          ...state[action.board.id],
+          name: action.board.name
+        }
+      };
     case ADD_COLUMN:
       return addColumn(state, action);
     case DEL_COLUMN:

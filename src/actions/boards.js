@@ -1,4 +1,4 @@
-import { ADD_BOARD, DEL_BOARD } from "./types";
+import { ADD_BOARD, DEL_BOARD, EDIT_BOARD } from "./types";
 let currentId = 1;
 
 export function addBoard(name) {
@@ -33,4 +33,14 @@ export function deleteBoard(id) {
 
     dispatch(action);
   };
+}
+
+export function editBoard(id, name) {
+  return {
+    type: EDIT_BOARD,
+    board: {
+      id: id,
+      name: name
+    }
+  }
 }

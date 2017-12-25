@@ -1,6 +1,12 @@
 import reducer from "./boards";
 import omit from "lodash.omit";
-import { ADD_BOARD, DEL_BOARD, ADD_COLUMN, DEL_COLUMN } from "../actions/types";
+import {
+  ADD_BOARD,
+  DEL_BOARD,
+  EDIT_BOARD,
+  ADD_COLUMN,
+  DEL_COLUMN
+} from "../actions/types";
 
 function createState() {
   return {
@@ -36,6 +42,20 @@ describe("Board Reducer", function() {
   it("should handle DEL_BOARD action", function() {
     const actual = reducer(createState(), { type: DEL_BOARD, boardId: 1 });
     const expected = omit(createState(), "1");
+    expect(actual).toEqual(expected);
+  });
+
+  it("should handle EDIT_BOARD action", function() {
+    const actual = reducer(createState(), {
+      type: EDIT_BOARD,
+      board: { id: 1, name: "new name" }
+    });
+
+    const expected = {
+      ...createState(),
+      "1": { id: 1, name: "new name", columns: [1, 2] }
+    };
+
     expect(actual).toEqual(expected);
   });
 

@@ -31,4 +31,17 @@ describe("board actions", function() {
 
     expect(actual).toEqual(expected);
   });
+
+  it("editBoard", function() {
+    const actual = action.editBoard(1, "new name");
+    const expected = {
+      type: TYPE.EDIT_BOARD,
+      board: {
+        id: 1,
+        name: "new name"
+      }
+    };
+
+    expect(actual).toEqual(expected);
+  });
 });
