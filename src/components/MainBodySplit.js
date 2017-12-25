@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class MainBodySplit extends Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
   render() {
     const { children } = this.props;
 
