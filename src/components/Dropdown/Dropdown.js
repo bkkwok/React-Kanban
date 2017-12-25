@@ -38,8 +38,8 @@ class Dropdown extends Component {
     });
 
     return (
-      <div className={containerClass}>
-        <div className="dropdown_toggle" onClick={this.toggleDropDown}>
+      <div className={containerClass} onClick={this.toggleDropDown}>
+        <div className="dropdown_toggle">
           {icon}
         </div>
         <div className={classes}>{children}</div>
