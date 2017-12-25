@@ -3,50 +3,89 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { tasksPerColumnSelector } from "../../reducers";
 import { addTask } from "../../actions/tasks";
+import * as columnActions from "../../actions/columns";
 import AddTaskBtn from "./AddTaskBtn";
 import TaskForm from "../TaskForm/TaskForm";
 import Task from "../Task";
+import Dropdown from "../Dropdown/Dropdown";
+import Link from "../Dropdown/Link";
+import ArrowIcon from "../../assets/ArrowIcon";
+import Input from "../Input";
 
 class Column extends Component {
-  constructor() {
-    super();
+  state = {
+    isAddingTask: false,
+    isRenaming: false
+  };
 
-    this.state = {
-      isAddingTask: false
-    };
-
-    this.renderTasks = this.renderTasks.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleAddTask = this.handleAddTask.bind(this);
-  }
-
-  renderTasks(tasks) {
+  renderTasks = tasks => {
     const { id } = this.props;
 
     return tasks.map(task => <Task key={task.id} colId={id} {...task} />);
-  }
+  };
 
-  handleToggle() {
+  handleToggle = () => {
     this.setState(function({ isAddingTask }) {
       return {
         isAddingTask: !isAddingTask
       };
     });
-  }
+  };
 
-  handleAddTask(task, priority) {
+  handleAddTask = (task, priority) => {
     const { addTask, id } = this.props;
     addTask(id, task, priority);
-  }
+  };
+
+  showInput = () => {
+    this.setState({ isRenaming: true });
+  };
+
+  hideInput = () => {
+    this.setState({ isRenaming: false });
+  };
+
+  handleEdit = name => {
+    const { editColumn, id } = this.props;
+
+    editColumn(id, name);
+  };
+
+  handleDelete = () => {
+    const { deleteColumn, boardId, id } = this.props;
+    deleteColumn(boardId, id);
+  };
 
   render() {
-    const { tasks } = this.props;
-    const { isAddingTask } = this.state;
+    const { tasks, name } = this.props;
+    const { isAddingTask, isRenaming } = this.state;
 
     return (
       <div className="column">
         <div className="column__content">
-          <div className="column__title">{this.props.name}</div>
+          {isRenaming ? (
+            <Input
+              autoFocus
+              value={name}
+              className="column__input"
+              submitFunc={this.handleEdit}
+              hideInput={this.hideInput}
+            />
+          ) : (
+            <div className="column__header">
+              <div className="column__title">{name}</div>
+              <div className="column__dropdown_container">
+                <Dropdown
+                  icon={<ArrowIcon />}
+                  containerClass="column__dropdown"
+                >
+                  <Link onClick={this.showInput}>Rename</Link>
+                  <Link onClick={this.handleDelete}>Delete</Link>
+                </Dropdown>
+              </div>
+            </div>
+          )}
+
           <AddTaskBtn toggleAddTask={this.handleToggle} />
           {isAddingTask && <TaskForm submitTask={this.handleAddTask} />}
           <div className="column__tasks">{this.renderTasks(tasks)}</div>
@@ -65,11 +104,7 @@ export const mapStateToProps = (state, props) => {
 };
 
 export const mapDispatchToProps = dispatch => {
-  return {
-    addTask: (columnId, task, priority) => {
-      dispatch(addTask(columnId, task, priority))
-    }
-  }
-}
+  return bindActionCreators({ ...columnActions, addTask: addTask }, dispatch);
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Column);

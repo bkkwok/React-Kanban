@@ -39,3 +39,21 @@
     font-weight: 600;
   }
 }
+
+.column__header {
+  display: flex;
+}
+
+.column__dropdown {
+  position: absolute;
+  padding: 5px;
+}
+
+.column__dropdown .arrow-icon {
+  fill: $dark;
+}
+
+.column__dropdown_container {
+  cursor: pointer;
+  position: relative;
+}

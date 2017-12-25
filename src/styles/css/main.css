@@ -527,6 +527,20 @@ input {
   .column__input::placeholder {
     font-weight: 600; }
 
+.column__header {
+  display: flex; }
+
+.column__dropdown {
+  position: absolute;
+  padding: 5px; }
+
+.column__dropdown .arrow-icon {
+  fill: #333; }
+
+.column__dropdown_container {
+  cursor: pointer;
+  position: relative; }
+
 .TaskForm {
   margin-top: 10px;
   background-color: #fff; }
