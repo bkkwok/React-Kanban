@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import AllBoards from "./AllBoards";
 import BoardList from "./BoardList/BoardList";
@@ -8,6 +8,7 @@ import BoardView from "./BoardView";
 export default function App() {
   return (
     <div className="App">
+      <Switch>
       <Route
         exact
         path="/boards"
@@ -38,6 +39,8 @@ export default function App() {
           );
         }}
       />
+      <Redirect to="/boards" />
+      </Switch>
     </div>
   );
 }
