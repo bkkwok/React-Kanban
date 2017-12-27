@@ -6,7 +6,6 @@ import DropdownLink from "./Dropdown/DropdownLink";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../actions/tasks";
-import cn from "classnames";
 
 class Task extends Component {
   constructor() {
