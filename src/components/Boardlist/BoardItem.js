@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import cn from "classnames";
 import { bindActionCreators } from "redux";
 import * as boardActions from "../../actions/boards";
 import Input from "../Input";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownLink from "../Dropdown/DropdownLink";
 import OptionIcon from "../../assets/OptionIcon";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class BoardItem extends Component {
   state = {
@@ -30,10 +31,16 @@ class BoardItem extends Component {
   hideInput = () => {
     this.setState({ isRenaming: false });
   };
+
   render() {
     const { isRenaming } = this.state;
 
-    const { id, name, deleteBoard } = this.props;
+    const { id, name, isActive } = this.props;
+
+    const classes = cn(`boardlist__boarditem`, { boarditem__active: isActive });
+    const linkClass = cn("boarditem__name plain_link", {
+      "boarditem__name-active": isActive
+    });
 
     return (
       <div>
@@ -45,9 +52,11 @@ class BoardItem extends Component {
             autoFocus
           />
         ) : (
-          <div className="boardlist__boarditem">
+          <div className={classes}>
             <div className="boarditem__row">
-              <Link className="boarditem__name" to={`/board/${id}`}>{name}</Link>
+              <Link className={linkClass} to={`/board/${id}`}>
+                {name}
+              </Link>
               <Dropdown
                 containerClass="boarditem__dropdown_container"
                 icon={<OptionIcon />}

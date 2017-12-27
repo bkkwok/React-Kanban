@@ -1,19 +1,43 @@
-import React, { Component } from 'react';
-import MainBodySplit from './MainBodySplit';
-import BoardList from './BoardList';
-import Board from './Board';
+import React from "react";
+import { Route } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import DashBoard from "./DashBoard";
+import BoardList from "./BoardList";
+import BoardView from "./BoardView";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <MainBodySplit>
-          <BoardList />
-          <Board />
-        </MainBodySplit>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <Route
+        exact
+        path="/dashboard"
+        render={props => {
+          return (
+            <div className="kanban_ui">
+              <BoardList {...props} />
+              <div className="kanban_main">
+                <SearchBar />
+                <DashBoard {...props} />
+              </div>
+            </div>
+          );
+        }}
+      />
+      <Route
+        exact
+        path="/board/:id"
+        render={props => {
+          return (
+            <div className="kanban_ui">
+              <BoardList {...props} />
+              <div className="kanban_main">
+                <SearchBar />
+                <BoardView {...props} />
+              </div>
+            </div>
+          );
+        }}
+      />
+    </div>
+  );
 }
-
-export default App;

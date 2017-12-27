@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import add_icon from "../../assets/add.svg";
 
 export default function AddTaskBtn({ toggleAddTask }) {

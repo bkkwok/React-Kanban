@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import AddMinusIcon from "./AddMinusIcon";
 import AddBoardInput from "./AddBoardInput";
 import BoardItem from "./BoardItem";
-import logo from "../../assets/logo.svg";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as boardActions from "../../actions/boards";
+import logo from "../../assets/logo.svg";
 
 class BoardList extends Component {
   constructor() {
@@ -20,11 +21,12 @@ class BoardList extends Component {
   }
 
   renderBoardItems() {
-    const { boardItems, deleteBoard } = this.props;
+    const { boardItems, deleteBoard, match } = this.props;
     return Object.keys(boardItems).map(id => (
       <BoardItem
         key={id}
         id={id}
+        isActive={id == match.params.id}
         deleteBoard={deleteBoard}
         {...boardItems[id]}
       />
@@ -46,15 +48,19 @@ class BoardList extends Component {
 
   render() {
     const { isAddingBoard } = this.state;
-    const { addBoard } = this.props;
     const boardItems = this.renderBoardItems();
+
     return (
       <div className="BoardList">
-        <div className="logo-wrap">
-          <img src={logo} className="App-logo" alt="logo" />
-        </div>
+        <Link to="/dashboard">
+          <div className="logo-wrap">
+            <img src={logo} className="App-logo" alt="logo" />
+          </div>
+        </Link>
         <div className="boardlist-title">
-          <div className="bold-text icon-right">boards</div>
+          <div className="bold-text icon-right">
+            <Link className="plain_link" to="/dashboard">boards</Link>
+          </div>
           <AddMinusIcon
             onClick={this.toggleAddBoard}
             isAddingBoard={isAddingBoard}

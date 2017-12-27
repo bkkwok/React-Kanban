@@ -13,7 +13,9 @@ class BoardView extends Component {
   }
 
   renderColumns(columns) {
-    return columns.map(col => <Column key={col.id} boardId={this.props.board.id} {...col} />);
+    return columns.map(col => (
+      <Column key={col.id} boardId={this.props.board.id} {...col} />
+    ));
   }
 
   render() {
@@ -26,6 +28,7 @@ class BoardView extends Component {
     if (!board) {
       return <Redirect to={from} />;
     }
+
     return (
       <div className="boardview">
         <div className="boardview__header">

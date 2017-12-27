@@ -20,13 +20,15 @@ export const boardSelector = (state, id) => fromBoards.getBoard(state, id);
 export const columnsPerBoardSelector = (state, boardId) => {
   let board = fromBoards.getBoard(state, boardId);
 
-  if(board) {
-    return board.columns.map(colId => fromColumns.getColumn(state, colId))
+  if (board) {
+    return board.columns.map(colId => fromColumns.getColumn(state, colId));
   }
 
   return null;
-}
+};
 
 export const tasksPerColumnSelector = (state, colId) => {
-  return fromColumns.getColumn(state, colId).tasks.map(taskId => fromTasks.getTask(state, taskId))
-}
+  return fromColumns
+    .getColumn(state, colId)
+    .tasks.map(taskId => fromTasks.getTask(state, taskId));
+};
