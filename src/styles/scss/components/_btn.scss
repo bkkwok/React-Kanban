@@ -1,0 +1,15 @@
+.btn {
+  color: #fff;
+  padding: 5px 9px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: $green;
+
+  &:hover {
+    background-color: $dark-green;
+  }
+}

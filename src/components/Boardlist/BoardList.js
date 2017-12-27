@@ -6,45 +6,40 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as boardActions from "../../actions/boards";
+import { allBoardsSelector } from "../../reducers";
 import logo from "../../assets/logo.svg";
 
 class BoardList extends Component {
-  constructor() {
-    super();
+  state = {
+    isAddingBoard: false
+  };
 
-    this.state = {
-      isAddingBoard: false
-    };
-
-    this.handleAddBoard = this.handleAddBoard.bind(this);
-    this.toggleAddBoard = this.toggleAddBoard.bind(this);
-  }
-
-  renderBoardItems() {
+  renderBoardItems = () => {
     const { boardItems, deleteBoard, match } = this.props;
-    return boardItems.map(id => (
-      <BoardItem
-        key={id}
-        id={id}
-        isActive={id == match.params.id}
-        deleteBoard={deleteBoard}
-        {...boardItems[id]}
-      />
-    ));
-  }
+    return boardItems.map(board => {
+      return (
+        <BoardItem
+          key={board.id}
+          isActive={board.id == match.params.id}
+          deleteBoard={deleteBoard}
+          {...board}
+        />
+      );
+    });
+  };
 
-  toggleAddBoard() {
+  toggleAddBoard = () => {
     this.setState(({ isAddingBoard }) => {
       return {
         isAddingBoard: !isAddingBoard
       };
     });
-  }
+  };
 
-  handleAddBoard(name) {
+  handleAddBoard = name => {
     this.props.addBoard(name);
     this.setState({ isAddingBoard: false });
-  }
+  };
 
   render() {
     const { isAddingBoard } = this.state;
@@ -52,14 +47,16 @@ class BoardList extends Component {
 
     return (
       <div className="BoardList">
-        <Link to="/dashboard">
+        <Link to="/boards">
           <div className="logo-wrap">
             <img src={logo} className="App-logo" alt="logo" />
           </div>
         </Link>
         <div className="boardlist-title">
           <div className="bold-text icon-right">
-            <Link className="plain_link" to="/dashboard">boards</Link>
+            <Link className="plain_link" to="/boards">
+              boards
+            </Link>
           </div>
           <AddMinusIcon
             onClick={this.toggleAddBoard}
@@ -77,7 +74,7 @@ class BoardList extends Component {
 
 const mapStateToProps = state => {
   return {
-    boardItems: state.boards
+    boardItems: allBoardsSelector(state)
   };
 };
 

@@ -20,7 +20,7 @@ class BoardView extends Component {
 
   render() {
     const { from } = this.props.location.state || {
-      from: { pathname: "/dashboard" }
+      from: { pathname: "/boards" }
     };
 
     const { board, columns } = this.props;

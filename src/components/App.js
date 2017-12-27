@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import AllBoards from "./AllBoards";
-import BoardList from "./BoardList";
+import BoardList from "./BoardList/BoardList";
 import BoardView from "./BoardView";
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
     <div className="App">
       <Route
         exact
-        path="/dashboard"
+        path="/boards"
         render={props => {
           return (
             <div className="kanban_ui">

@@ -1,0 +1,97 @@
+.card_container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+.card {
+  position: relative;
+  cursor: pointer;
+  width: 20%;
+  min-height: 100px;
+  box-sizing: border-box;
+  padding: 40px 30px;
+  margin: 0 16px 16px 0;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  background-color: #fff;
+}
+
+.card-goTo {
+  background-color: $light-green;
+
+  &:hover {
+    background-color: $dark-green;
+  }
+
+  &:hover .card__delete-icon {
+    display: block;
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.card-boardForm {
+  cursor: auto;
+  padding: 25px 20px 10px;
+}
+
+.boardForm__header {
+  text-align: center;
+  color: $gray;
+  font-size: 0.9em;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $gray;
+}
+
+.boardForm__input {
+  width: 100%;
+  min-height: 30px;
+  margin-bottom: 15px;
+}
+
+.boardForm__label {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.boardForm__delete-icon {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  fill: $gray;
+}
+
+.card__name {
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card__delete-icon {
+  position: absolute;
+  display: none;
+  top: 3px;
+  right: 3px;
+
+  &:hover {
+    fill: red;
+  }
+}
+
+.card-addBoard {
+  background-color: $light-gray;
+  color: $light-dark;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $gray;
+  }
+}

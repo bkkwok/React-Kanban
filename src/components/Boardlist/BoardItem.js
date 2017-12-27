@@ -34,7 +34,6 @@ class BoardItem extends Component {
 
   render() {
     const { isRenaming } = this.state;
-
     const { id, name, isActive } = this.props;
 
     const classes = cn(`boardlist__boarditem`, { boarditem__active: isActive });

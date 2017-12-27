@@ -23,8 +23,12 @@ class AddBoardInput extends Component {
   }
 
   handleSubmit(e) {
+    const { value } = this.state;
+
     if (e.keyCode === 13) {
-      this.props.handleAddBoard(this.state.value);
+      if(value.length > 0) {
+        this.props.handleAddBoard(this.state.value);
+      }
     }
   }
 
