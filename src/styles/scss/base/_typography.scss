@@ -3,7 +3,7 @@ body {
 }
 
 .bold-text {
-  color: $light-dark;
+  color: #fff;
   font-size: .8em;
   font-weight: 600;
   text-transform: uppercase;
@@ -11,4 +11,9 @@ body {
 
 .icon-right {
   margin-right: 40px;
+}
+
+.plain_link {
+  text-decoration: none;
+  color: #fff;
 }

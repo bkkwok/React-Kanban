@@ -6,6 +6,19 @@ input {
   box-sizing: border-box;
 }
 
-.App {
-  width: 100%;
+.header {
+  display: flex;
+  flex: none;
+}
+
+.kanban_ui {
+  display: flex;
+  height: 100%;
+}
+
+.kanban_main {
+  overflow-x: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 }

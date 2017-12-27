@@ -1,18 +1,24 @@
 .columnsContainer {
   display: flex;
   align-items: flex-start;
+  height: 100%;
 }
+
 .column {
   box-sizing: border-box;
   width: 300px;
+  height: 100%;
   max-width: 300px;
   flex: 0 0 300px;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .column__content {
   box-sizing: border-box;
   display: flex;
+  flex: 1;
   flex-direction: column;
   width: 280px;
 }
@@ -25,8 +31,9 @@
 .column__addButton {
   background-color: #fff;
   cursor: pointer;
-  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: center;
 }
@@ -42,6 +49,8 @@
 
 .column__header {
   display: flex;
+  flex: none;
+  margin-bottom: 15px;
 }
 
 .column__dropdown {
@@ -56,4 +65,27 @@
 .column__dropdown_container {
   cursor: pointer;
   position: relative;
+}
+
+.column__tasks {
+  flex: 1;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.addColumn {
+  display: flex;
+}
+
+.addColumn-icon {
+  height: 11px;
+  padding-right: 4px;
+}
+
+.addColumn__btn {
+  color: $light-dark;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
 }

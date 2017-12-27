@@ -1,9 +1,10 @@
 .BoardList {
   width: 225px;
+  height: 100%;
   border-right: 1px solid $gray;
-}
-
-.boardlist-content {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background-color: $dark;
 }
 
 .boardlist-title {
@@ -23,7 +24,7 @@
 }
 
 .boarditem__active {
-  background-color: #61dafb;
+  border-left: 5px solid gold;
 }
 
 .boarditem__row {
@@ -36,12 +37,12 @@
 .boarditem__name {
   cursor: pointer;
   margin-right: auto;
-  text-decoration: none;
-  color: $dark;
+  min-width: 100px;
+  padding: 10px 0;
 }
 
 .boarditem__name-active {
-  color: white;
+  color: $react-blue;
 }
 
 .boarditem__dropdown_container {

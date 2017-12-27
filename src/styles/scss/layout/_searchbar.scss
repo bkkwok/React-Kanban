@@ -3,11 +3,13 @@
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
+  flex: none;
   height: 80px;
+  width: auto;
   background-color: #fff;
   align-items: center;
+  box-sizing: border-box;
   border-bottom: 1px solid $gray;
-  flex-shrink: 0;
 }
 
 .search-icon {

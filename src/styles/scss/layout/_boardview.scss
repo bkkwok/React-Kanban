@@ -1,5 +1,14 @@
+.boardview_container {
+ display: flex;
+}
+
 .boardview {
+  overflow-x: auto;
   padding: 35px 55px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: $lighter-gray;
 }
 
 .boardview__header {
@@ -9,21 +18,4 @@
 .boardview__name {
   font-size: 2em;
   font-weight: 600;
-}
-
-.addColumn {
-  display: flex;
-  align-items: center;
-}
-
-.addColumn-icon {
-  height: 11px;
-  padding-right: 4px;
-}
-
-.addColumn__btn {
-  color: $light-dark;
-  font-weight: 600;
-  font-size: 1.1em;
-  cursor: pointer;
 }
