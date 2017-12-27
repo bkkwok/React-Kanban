@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import DashBoard from "./DashBoard";
+import AllBoards from "./AllBoards";
 import BoardList from "./BoardList";
 import BoardView from "./BoardView";
 
@@ -17,7 +17,7 @@ export default function App() {
               <BoardList {...props} />
               <div className="kanban_main">
                 <SearchBar />
-                <DashBoard {...props} />
+                <AllBoards {...props} />
               </div>
             </div>
           );
