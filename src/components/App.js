@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import MainBodySplit from './MainBodySplit';
-import BoardList from './Boardlist';
+import BoardList from './BoardList';
 import Board from './Board';
-import SearchBar from "./SearchBar";
-import BoardView from "./BoardView";
 
 class App extends Component {
   render() {
