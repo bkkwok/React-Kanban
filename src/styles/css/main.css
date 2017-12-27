@@ -423,15 +423,7 @@ input {
   overflow-x: auto;
   display: flex;
   flex-grow: 1;
-  flex-direction: column; }
-
-.Board {
-  display: flex;
   flex-direction: column;
-  width: 100%; }
-
-.Board__Main {
-  height: 100%;
   background-color: #f2f2f2; }
 
 .BoardList {
@@ -476,14 +468,6 @@ input {
   padding-top: 5px;
   color: black; }
 
-.MainBodySplit {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: flex;
-  height: 100%;
-  width: 100%; }
-
 .search-bar {
   display: -webkit-flex;
   display: -moz-flex;
@@ -519,8 +503,7 @@ input {
   padding: 35px 55px;
   display: flex;
   flex: 1;
-  flex-direction: column;
-  background-color: #f2f2f2; }
+  flex-direction: column; }
 
 .boardview__header {
   margin-bottom: 30px; }
