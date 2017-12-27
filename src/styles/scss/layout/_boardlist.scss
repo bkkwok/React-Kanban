@@ -4,16 +4,48 @@
 }
 
 .boardlist-content {
-  padding: 45px 30px;
 }
 
 .boardlist-title {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  padding: 45px 30px 0;
 }
 
 .boardlist__input {
-  min-width: 100%;
-  max-width: 100%;
+  display: block;
+  width: 80%;
+  margin: 0 auto 30px;
+}
+
+.boardlist__boarditem {
+}
+
+.boarditem__active {
+  background-color: #61dafb;
+}
+
+.boarditem__row {
+  padding: 0 15px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.boarditem__name {
+  cursor: pointer;
+  margin-right: auto;
+  text-decoration: none;
+  color: $dark;
+}
+
+.boarditem__name-active {
+  color: white;
+}
+
+.boarditem__dropdown_container {
+  cursor: pointer;
+  padding-top: 5px;
+  color: black;
 }
