@@ -22,7 +22,7 @@ class BoardList extends Component {
 
   renderBoardItems() {
     const { boardItems, deleteBoard, match } = this.props;
-    return Object.keys(boardItems).map(id => (
+    return boardItems.map(id => (
       <BoardItem
         key={id}
         id={id}

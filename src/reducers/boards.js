@@ -62,7 +62,9 @@ export const delColumn = (state, action) => {
 };
 
 export const getAllBoards = state => {
-  return state.boards;
+  const boards = state.boards;
+
+  return Object.keys(boards).map(id => boards[id]);
 };
 
 export const getBoard = (state, id) => {
