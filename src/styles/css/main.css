@@ -548,6 +548,7 @@ input {
 
 .column__input {
   padding: 4px;
+  margin-bottom: 5px;
   width: 100%; }
   .column__input::placeholder {
     font-weight: 600; }
@@ -555,7 +556,7 @@ input {
 .column__header {
   display: flex;
   flex: none;
-  margin-bottom: 15px; }
+  margin-bottom: 10px; }
 
 .column__dropdown {
   cursor: pointer;
