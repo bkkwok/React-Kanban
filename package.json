@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "express": "^4.16.2",
     "history": "^4.7.2",
     "lodash.omit": "^4.5.0",
     "prop-types": "^15.6.0",
@@ -15,12 +16,16 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
+  "engines": {
+    "node": "7.6.0"
+  },
   "scripts": {
     "sass": "sass --watch src/styles/scss:src/styles/css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {}
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build",
+    "deploy": "node ./server"
+  }
 }
