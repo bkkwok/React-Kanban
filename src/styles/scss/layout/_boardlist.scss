@@ -34,11 +34,20 @@
   align-items: center;
 }
 
+.boarditem__input {
+  display: block;
+  min-width: 100px;
+  max-width: 155px;
+  margin: 0 15px;
+}
+
 .boarditem__name {
   cursor: pointer;
   margin-right: auto;
   min-width: 100px;
+  max-width: 155px;
   padding: 10px 0;
+  overflow: hidden;
 }
 
 .boarditem__name-active {

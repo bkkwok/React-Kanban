@@ -56,6 +56,7 @@ class BoardItem extends Component {
         {isRenaming ? (
           <Input
             value={name}
+            className="boarditem__input"
             submitFunc={this.handleEdit}
             hideInput={this.hideInput}
             autoFocus

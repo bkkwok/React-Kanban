@@ -454,11 +454,19 @@ input {
   justify-content: right;
   align-items: center; }
 
+.boarditem__input {
+  display: block;
+  min-width: 100px;
+  max-width: 155px;
+  margin: 0 15px; }
+
 .boarditem__name {
   cursor: pointer;
   margin-right: auto;
   min-width: 100px;
-  padding: 10px 0; }
+  max-width: 155px;
+  padding: 10px 0;
+  overflow: hidden; }
 
 .boarditem__name-active {
   color: #61dafb; }
@@ -535,7 +543,8 @@ input {
 
 .column__title {
   font-size: 1.1em;
-  font-weight: 600; }
+  font-weight: 600;
+  overflow: hidden; }
 
 .column__addButton {
   background-color: #fff;
