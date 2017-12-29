@@ -20,6 +20,14 @@ class Input extends Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("mousedown", this.handleOutsideClick, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("mousedown", this.handleOutsideClick, false);
+  }
+
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
@@ -38,33 +46,27 @@ class Input extends Component {
   };
 
   handleOutsideClick = e => {
-    e.stopPropagation();
-
     const { submitFunc, hideInput } = this.props;
     const { value } = this.state;
 
-    if (value.length > 0) {
-      submitFunc(value);
-    }
+    if(this.wrapperRef && !this.wrapperRef.contains(e.target)) {
+      if (value.length > 0) {
+        submitFunc(value);
+      }
 
-    hideInput();
+      hideInput();
+    }
   };
 
   getProps = () => {
     return omit(this.props, ["submitFunc", "hideInput", "value"]);
   };
 
-  componentDidMount() {
-    window.addEventListener("click", this.handleOutsideClick, false);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("click", this.handleOutsideClick, false);
+  setWrapperRef = node => {
+    this.wrapperRef = node;
   }
 
   render() {
-    const props = this.getProps();
-
     return (
       <input
         {...this.getProps()}
@@ -72,6 +74,7 @@ class Input extends Component {
         onChange={this.handleChange}
         onKeyUp={this.handleSubmit}
         onClick={e => e.stopPropagation()}
+        ref={this.setWrapperRef}
       />
     );
   }

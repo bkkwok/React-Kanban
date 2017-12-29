@@ -7,15 +7,17 @@ import * as columnActions from "../../actions/columns";
 import AddTaskBtn from "./AddTaskBtn";
 import TaskForm from "../TaskForm/TaskForm";
 import Task from "../Task";
-import Dropdown from "../Dropdown/Dropdown";
-import DropdownLink from "../Dropdown/DropdownLink";
-import ArrowIcon from "../../assets/ArrowIcon";
+import DropDown from "../DropDown/DropDown";
+import DropDownBtn from "../DropDown/DropDownBtn";
+import DropDownLink from "../DropDown/DropDownLink";
 import Input from "../Input";
+import ArrowIcon from "../../assets/ArrowIcon.js";
 
 class Column extends Component {
   state = {
     isAddingTask: false,
-    isRenaming: false
+    isRenaming: false,
+    isDropDownActive: false
   };
 
   renderTasks = tasks => {
@@ -37,12 +39,14 @@ class Column extends Component {
     addTask(id, task, priority);
   };
 
-  showInput = () => {
-    this.setState({ isRenaming: true });
+  showInput = e => {
+    this.setState(() => {
+      return { isRenaming: true, isDropDownActive: false };
+    });
   };
 
   hideInput = () => {
-    this.setState({ isRenaming: false });
+    this.setState({ isRenaming: false, isDropDownActive: false });
   };
 
   handleEdit = name => {
@@ -53,12 +57,31 @@ class Column extends Component {
 
   handleDelete = () => {
     const { deleteColumn, boardId, id } = this.props;
+
     deleteColumn(boardId, id);
+  };
+
+  showDropDown = e => {
+    this.setState({
+      isDropDownActive: true,
+      xPos: e.pageX,
+      yPos: e.pageY
+    });
+  };
+
+  hideDropDown = () => {
+    this.setState({ isDropDownActive: false, xPos: 0, yPos: 0 });
   };
 
   render() {
     const { tasks, name } = this.props;
-    const { isAddingTask, isRenaming } = this.state;
+    const {
+      isAddingTask,
+      isRenaming,
+      isDropDownActive,
+      xPos,
+      yPos
+    } = this.state;
 
     return (
       <div className="column">
@@ -74,17 +97,24 @@ class Column extends Component {
           ) : (
             <div className="column__header">
               <div className="column__title">{name}</div>
-              <div className="column__dropdown_container">
-                <Dropdown
-                  icon={<ArrowIcon />}
-                  containerClass="column__dropdown"
+              <DropDownBtn
+                className="column__dropdown"
+                onClick={this.showDropDown}
+              >
+                <ArrowIcon />
+              </DropDownBtn>
+              {isDropDownActive && (
+                <DropDown
+                  closeDropDown={this.hideDropDown}
+                  xPos={xPos}
+                  yPos={yPos}
                 >
-                  <DropdownLink onClick={this.showInput}>Rename</DropdownLink>
-                  <DropdownLink onClick={this.handleDelete}>
+                  <DropDownLink onClick={this.showInput}>Rename</DropDownLink>
+                  <DropDownLink onClick={this.handleDelete}>
                     Delete
-                  </DropdownLink>
-                </Dropdown>
-              </div>
+                  </DropDownLink>
+                </DropDown>
+              )}
             </div>
           )}
 

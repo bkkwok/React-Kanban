@@ -7,14 +7,29 @@
   border: 1px solid $light-dark;
 }
 
-.dropdown-active {
-  display: block;
+.dropdown__container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 0;
+  z-index: 10000;
+}
+
+.dropdown {
+  background-color: #fff;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box;
 }
 
 .dropdown_link {
-  padding: 5px;
+  max-width: 300px;
+  min-width: 160px;
+  padding: 5px 10px;
+  cursor: pointer;
 
   &:hover {
-    background-color: $light-gray;
+    background-color: $react-blue;
   }
 }

@@ -1,49 +1,47 @@
 import React, { Component } from "react";
-import cn from "classnames";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+
+const dropDownRoot = document.getElementById("dropdown-root");
 
 class Dropdown extends Component {
   static propTypes: {
-    icon: PropTypes.any.isRequired
-  };
-
-  state = {
-    isActive: false
+    closeDropDown: PropTypes.func.isRequired,
+    xPos: PropTypes.number.isRequired,
+    yPos: PropTypes.number.isRequired
   };
 
   componentDidMount() {
-    window.addEventListener("click", this.handleOutsideClick, false);
+    window.addEventListener("mousedown", this.handleOutsideClick, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("click", this.handleOutsideClick, false);
+    window.removeEventListener("mousedown", this.handleOutsideClick, false);
   }
 
-  toggleDropDown = e => {
-    e.stopPropagation();
-
-    this.setState(({ isActive }) => ({ isActive: !isActive }))
+  handleOutsideClick = e => {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
+      this.props.closeDropDown();
+    }
   };
 
-  handleOutsideClick = () => {
-    this.setState({ isActive: false })
+  setWrapperRef = node => {
+    this.wrapperRef = node;
   };
 
   render() {
-    const { icon, children, containerClass } = this.props;
-    const { isActive } = this.state;
+    const { xPos, yPos, children } = this.props;
+    const styles = { top: yPos + 12 + "px", left: xPos - 7 + "px" };
 
-    const classes = cn("dropdown_content", {
-      "dropdown-active": isActive
-    });
-
-    return (
-      <div className={containerClass} onClick={this.toggleDropDown}>
-        <div className="dropdown_toggle">
-          {icon}
-        </div>
-        <div className={classes}>{children}</div>
-      </div>
+    return createPortal(
+      <div
+        className="dropdown__container"
+        style={styles}
+        ref={this.setWrapperRef}
+      >
+        <div className="dropdown">{children}</div>
+      </div>,
+      dropDownRoot
     );
   }
 }

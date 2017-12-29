@@ -18,8 +18,6 @@ class AddColumn extends Component {
   }
 
   showInput(e) {
-    e.stopPropagation();
-
     this.setState(({ isAdding }) => {
       return {
         isAdding: true

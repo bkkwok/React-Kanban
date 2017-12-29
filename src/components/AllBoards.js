@@ -52,7 +52,6 @@ class AllBoards extends Component {
   };
 
   render() {
-    const { allBoards } = this.props;
     const { isAdding, boardName } = this.state;
 
     return (

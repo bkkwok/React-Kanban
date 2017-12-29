@@ -4,14 +4,16 @@ import cn from "classnames";
 import { bindActionCreators } from "redux";
 import * as boardActions from "../../actions/boards";
 import Input from "../Input";
-import Dropdown from "../Dropdown/Dropdown";
-import DropdownLink from "../Dropdown/DropdownLink";
+import DropDown from "../DropDown/DropDown";
+import DropDownBtn from "../DropDown/DropDownBtn";
+import DropDownLink from "../DropDown/DropDownLink";
 import OptionIcon from "../../assets/OptionIcon";
 import { Link } from "react-router-dom";
 
 class BoardItem extends Component {
   state = {
-    isRenaming: false
+    isRenaming: false,
+    isDropDownActive: false
   };
 
   handleDelete = () => {
@@ -25,15 +27,23 @@ class BoardItem extends Component {
   };
 
   showInput = () => {
-    this.setState({ isRenaming: true });
+    this.setState({ isRenaming: true, isDropDownActive: false });
   };
 
   hideInput = () => {
     this.setState({ isRenaming: false });
   };
 
+  showDropDown = e => {
+    this.setState({ isDropDownActive: true, xPos: e.pageX, yPos: e.pageY });
+  };
+
+  hideDropDown = e => {
+    this.setState({ isDropDownActive: false, xPos: 0, yPos: 0 });
+  };
+
   render() {
-    const { isRenaming } = this.state;
+    const { isRenaming, isDropDownActive, xPos, yPos } = this.state;
     const { id, name, isActive } = this.props;
 
     const classes = cn(`boardlist__boarditem`, { boarditem__active: isActive });
@@ -56,13 +66,24 @@ class BoardItem extends Component {
               <Link className={linkClass} to={`/board/${id}`}>
                 {name}
               </Link>
-              <Dropdown
-                containerClass="boarditem__dropdown_container"
-                icon={<OptionIcon />}
+              <DropDownBtn
+                className="boarditem__dropdown"
+                onClick={this.showDropDown}
               >
-                <DropdownLink onClick={this.showInput}>Rename</DropdownLink>
-                <DropdownLink onClick={this.handleDelete}>Delete</DropdownLink>
-              </Dropdown>
+                <OptionIcon />
+              </DropDownBtn>
+              {isDropDownActive && (
+                <DropDown
+                  closeDropDown={this.hideDropDown}
+                  xPos={xPos}
+                  yPos={yPos}
+                >
+                  <DropDownLink onClick={this.showInput}>Rename</DropDownLink>
+                  <DropDownLink onClick={this.handleDelete}>
+                    Delete
+                  </DropDownLink>
+                </DropDown>
+              )}
             </div>
           </div>
         )}

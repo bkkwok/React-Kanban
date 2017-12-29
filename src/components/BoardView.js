@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Column from "./Column";
+import Column from "./Column/Column";
 import AddColumn from "./AddColumn";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
