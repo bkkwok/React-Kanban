@@ -37,6 +37,10 @@
   flex: none;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box;
 }
 
 .column__input {

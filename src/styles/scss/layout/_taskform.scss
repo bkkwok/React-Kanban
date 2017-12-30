@@ -2,6 +2,10 @@
   margin-bottom: 10px;
   background-color: #fff;
   flex-shrink: 0;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box;
 }
 
 .TaskForm__priorities {
@@ -21,7 +25,8 @@
   &.priority_circle-low {
     background-color: $light-blue;
 
-    &.selected, &:hover {
+    &.selected,
+    &:hover {
       background-color: $blue;
     }
   }
@@ -29,7 +34,8 @@
   &.priority_circle-medium {
     background-color: $light-green;
 
-    &.selected, &:hover {
+    &.selected,
+    &:hover {
       background-color: $green;
     }
   }
@@ -37,7 +43,8 @@
   &.priority_circle-high {
     background-color: $light-red;
 
-    &.selected, &:hover {
+    &.selected,
+    &:hover {
       background-color: $red;
     }
   }

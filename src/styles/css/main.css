@@ -553,7 +553,11 @@ input {
   display: flex;
   flex: none;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box; }
 
 .column__input {
   padding: 4px;
@@ -600,7 +604,11 @@ input {
 .TaskForm {
   margin-bottom: 10px;
   background-color: #fff;
-  flex-shrink: 0; }
+  flex-shrink: 0;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box; }
 
 .TaskForm__priorities {
   display: flex;
@@ -645,7 +653,11 @@ input {
   background-color: #fff;
   min-height: 75px;
   margin-bottom: 10px;
-  padding: 10px 10px 30px; }
+  padding: 10px 10px 30px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  border: 1px solid #d5dce0;
+  box-sizing: border-box; }
   .task:hover .arrow-icon {
     fill: #333; }
   .task.task_priority-low {
