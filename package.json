@@ -7,6 +7,7 @@
     "express": "^4.16.2",
     "history": "^4.7.2",
     "lodash.omit": "^4.5.0",
+    "lodash.throttle": "^4.1.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
