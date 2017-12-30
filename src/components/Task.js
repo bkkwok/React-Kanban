@@ -11,7 +11,7 @@ import { DragSource } from "react-dnd";
 import { ItemTypes } from "../Constants";
 import omit from "lodash.omit";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import cn from 'classnames';
+import cn from "classnames";
 
 class Task extends Component {
   state = {
@@ -28,6 +28,14 @@ class Task extends Component {
     });
   };
 
+  hideEdit = e => {
+    this.setState(({ isEditting }) => {
+      return {
+        isEditting: false
+      };
+    });
+  };
+
   handleDelete = e => {
     const { deleteTask, id, colId } = this.props;
 
@@ -39,11 +47,7 @@ class Task extends Component {
 
     editTask(id, task, priority);
 
-    this.setState(({ isEditting }) => {
-      return {
-        isEditting: false
-      };
-    });
+    this.hideEdit();
   };
 
   showDropDown = e => {
@@ -56,7 +60,7 @@ class Task extends Component {
 
   setWrapperRef = node => {
     this.wrapperRef = node;
-  }
+  };
 
   componentDidMount() {
     // Use empty image as a drag preview so browsers don't draw it
@@ -70,8 +74,16 @@ class Task extends Component {
 
   render() {
     const { isEditting, isDropDownActive, xPos, yPos } = this.state;
-    const { task, priority, timestamp, connectDragSource, isDragging } = this.props;
-    const classes = cn('task', `task_priority-${priority}`, {isDragging: isDragging});
+    const {
+      task,
+      priority,
+      timestamp,
+      connectDragSource,
+      isDragging
+    } = this.props;
+    const classes = cn("task", `task_priority-${priority}`, {
+      isDragging: isDragging
+    });
 
     return isEditting ? (
       <TaskForm
@@ -95,7 +107,7 @@ class Task extends Component {
           )}
         </div>
       )
-    )
+    );
   }
 }
 
