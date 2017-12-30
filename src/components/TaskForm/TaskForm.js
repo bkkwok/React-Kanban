@@ -45,7 +45,10 @@ class TaskForm extends Component {
     const { value, priority } = this.state;
 
     return (
-      <form className="TaskForm" onSubmit={e => e.preventDefault()}>
+      <form
+        className="TaskForm"
+        onSubmit={e => e.preventDefault()}
+      >
         <div className="TaskForm__priorities">
           <PriorityOption
             selected={priority}
