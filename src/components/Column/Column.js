@@ -12,6 +12,8 @@ import DropDownBtn from "../DropDown/DropDownBtn";
 import DropDownLink from "../DropDown/DropDownLink";
 import Input from "../Input";
 import ArrowIcon from "../../assets/ArrowIcon.js";
+import { ItemTypes } from "../../Constants";
+import { DropTarget } from "react-dnd";
 
 class Column extends Component {
   state = {
@@ -74,7 +76,7 @@ class Column extends Component {
   };
 
   render() {
-    const { tasks, name } = this.props;
+    const { tasks, name, connectDropTarget } = this.props;
     const {
       isAddingTask,
       isRenaming,
@@ -117,15 +119,26 @@ class Column extends Component {
               )}
             </div>
           )}
-
           <AddTaskBtn toggleAddTask={this.handleToggle} />
           {isAddingTask && <TaskForm submitTask={this.handleAddTask} />}
-          <div className="column__tasks">{this.renderTasks(tasks)}</div>
+          {connectDropTarget(<div className="column__tasks">
+            {this.renderTasks(tasks)}
+          </div>)}
         </div>
       </div>
     );
   }
 }
+
+const dropTarget = {
+  drop: function(props, monitor, component) {
+    const task = monitor.getItem();
+    return {
+      ...task,
+      toColumnId: props.id
+    };
+  }
+};
 
 export const mapStateToProps = (state, props) => {
   const columnId = props.id;
@@ -139,4 +152,6 @@ export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ ...columnActions, addTask: addTask }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Column);
+export default DropTarget(ItemTypes.TASK, dropTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget()
+}))(connect(mapStateToProps, mapDispatchToProps)(Column));

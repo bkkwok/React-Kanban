@@ -7,6 +7,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../actions/tasks";
 import ArrowIcon from "../assets/ArrowIcon";
+import { DragSource } from "react-dnd";
+import { ItemTypes } from "../Constants";
+import omit from "lodash.omit";
 
 class Task extends Component {
   state = {
@@ -21,7 +24,7 @@ class Task extends Component {
         isEditting: true
       };
     });
-  }
+  };
 
   handleDelete = e => {
     const { deleteTask, id, colId } = this.props;
@@ -51,7 +54,7 @@ class Task extends Component {
 
   render() {
     const { isEditting, isDropDownActive, xPos, yPos } = this.state;
-    const { task, priority, timestamp } = this.props;
+    const { task, priority, timestamp, connectDragSource } = this.props;
     const classes = `task task_priority-${priority}`;
 
     return isEditting ? (
@@ -61,24 +64,50 @@ class Task extends Component {
         submitTask={this.handleEditSubmit}
       />
     ) : (
-      <div className={classes}>
-        <div className="task__timestamp">{timestamp}</div>
-        <div className="task__task">{task}</div>
-        <DropDownBtn className="task__dropdown" onClick={this.showDropDown}>
-          <ArrowIcon />
-        </DropDownBtn>
-        {isDropDownActive && (
-          <DropDown closeDropDown={this.hideDropDown} xPos={xPos} yPos={yPos}>
-            <DropDownLink onClick={this.handleDelete}>Delete</DropDownLink>
-            <DropDownLink onClick={this.showEdit}>Edit</DropDownLink>
-          </DropDown>
-        )}
-      </div>
+      connectDragSource(
+        <div className={classes}>
+          <div className="task__timestamp">{timestamp}</div>
+          <div className="task__task">{task}</div>
+          <DropDownBtn className="task__dropdown" onClick={this.showDropDown}>
+            <ArrowIcon />
+          </DropDownBtn>
+          {isDropDownActive && (
+            <DropDown closeDropDown={this.hideDropDown} xPos={xPos} yPos={yPos}>
+              <DropDownLink onClick={this.handleDelete}>Delete</DropDownLink>
+              <DropDownLink onClick={this.showEdit}>Edit</DropDownLink>
+            </DropDown>
+          )}
+        </div>
+      )
     );
   }
 }
 
+const dragSource = {
+  beginDrag: function(props, monitor, component) {
+    return {
+      fromColumnId: props.colId,
+      taskId: props.id
+    };
+  },
+  endDrag: function(props, monitor, component) {
+    const result = monitor.getDropResult();
+
+    if (result === null) return;
+
+    const { fromColumnId, toColumnId, taskId } = monitor.getDropResult();
+
+    if(fromColumnId === toColumnId) return;
+
+    props.moveTask(fromColumnId, toColumnId, taskId);
+  }
+};
+
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(taskActions, dispatch);
 
-export default connect(null, mapDispatchToProps)(Task);
+export default connect(null, mapDispatchToProps)(
+  DragSource(ItemTypes.TASK, dragSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource()
+  }))(Task)
+);
