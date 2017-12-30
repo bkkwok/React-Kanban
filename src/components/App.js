@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import NavBar from "./NavBar/NavBar";
 import AllBoards from "./AllBoards";
 import BoardList from "./BoardList/BoardList";
 import BoardView from "./BoardView";
@@ -18,7 +18,7 @@ export default function App() {
               <div className="kanban_ui">
                 <BoardList {...props} />
                 <div className="kanban_main">
-                  <SearchBar />
+                  <NavBar />
                   <AllBoards {...props} />
                 </div>
               </div>
@@ -33,7 +33,7 @@ export default function App() {
               <div className="kanban_ui">
                 <BoardList {...props} />
                 <div className="kanban_main">
-                  <SearchBar />
+                  <NavBar />
                   <BoardView {...props} />
                 </div>
               </div>

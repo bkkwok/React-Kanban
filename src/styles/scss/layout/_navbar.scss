@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 1px solid $gray;
+}
+
+.navbar__menu-icon {
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid black;
+}

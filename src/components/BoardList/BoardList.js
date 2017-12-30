@@ -6,8 +6,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as boardActions from "../../actions/boards";
-import { allBoardsSelector } from "../../reducers";
+import { collapseBoardList } from "../../actions/userinterface";
+import { allBoardsSelector, getBoardListState } from "../../reducers";
 import logo from "../../assets/logo.svg";
+import cancel_icon from "../../assets/cancel.svg";
+import cn from "classnames";
 
 class BoardList extends Component {
   state = {
@@ -41,17 +44,25 @@ class BoardList extends Component {
     this.setState({ isAddingBoard: false });
   };
 
+  hideBoardList = () => this.setState({ isCollapsed: true });
+
   render() {
     const { isAddingBoard } = this.state;
+    const { isCollapsed, collapseBoardList } = this.props;
     const boardItems = this.renderBoardItems();
+    const boardClass = cn("BoardList", { isCollapsed: isCollapsed });
 
     return (
-      <div className="BoardList">
-        <Link to="/boards">
-          <div className="logo-wrap">
+      <div className={boardClass}>
+        <div className="logo-wrap">
+          <Link className="logo_with_name" to="/boards">
             <img src={logo} className="App-logo" alt="logo" />
+            <span className="plain_link">kanban</span>
+          </Link>
+          <div className="boardlist__cancel-icon" onClick={collapseBoardList}>
+            <img src={cancel_icon} className="cancel-icon" alt="cancel" />
           </div>
-        </Link>
+        </div>
         <div className="boardlist-title">
           <div className="bold-text icon-right">
             <Link className="plain_link" to="/boards">
@@ -74,12 +85,13 @@ class BoardList extends Component {
 
 const mapStateToProps = state => {
   return {
-    boardItems: allBoardsSelector(state)
+    boardItems: allBoardsSelector(state),
+    isCollapsed: getBoardListState(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(boardActions, dispatch);
+  return bindActionCreators({ ...boardActions, collapseBoardList: collapseBoardList }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardList);

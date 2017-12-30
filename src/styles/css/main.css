@@ -432,13 +432,23 @@ input {
   border-right: 1px solid #ccc;
   flex-shrink: 0;
   box-sizing: border-box;
-  background-color: #333; }
+  background-color: #333;
+  transition: .5s; }
+  .BoardList.isCollapsed {
+    margin-left: -225px; }
+
+.boardlist__cancel-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  right: 8px;
+  padding: 0 5px; }
 
 .boardlist-title {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  padding: 45px 30px 0; }
+  padding: 25px 30px 0; }
 
 .boardlist__input {
   display: block;
@@ -480,13 +490,10 @@ input {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
-  flex: none;
-  height: 80px;
+  flex: 2;
+  height: 60px;
   width: auto;
-  background-color: #fff;
-  align-items: center;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc; }
+  align-items: center; }
 
 .search-icon {
   height: 30px;
@@ -795,6 +802,22 @@ input {
   .card-addBoard:hover {
     background-color: #ccc; }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc; }
+
+.navbar__menu-icon {
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid black; }
+
 .btn-icon {
   cursor: pointer;
   height: 25px;
@@ -814,19 +837,30 @@ input {
   height: 25px;
   padding: 5px; }
 
+.cancel-icon {
+  height: 12px; }
+
+.menu-icon {
+  height: 15px; }
+  .menu-icon:hover path {
+    fill: red; }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  width: 225px;
-  height: 60px; }
+  height: 50px; }
 
 .logo-wrap {
   display: flex;
-  align-items: center;
   max-width: 225px;
-  height: 80px;
-  background-color: #333;
+  height: 60px;
   box-sizing: border-box;
-  border-bottom: 1px solid #ccc; }
+  position: relative; }
+
+.logo_with_name {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.1em; }
 
 @keyframes App-logo-spin {
   from {

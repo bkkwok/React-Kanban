@@ -1,20 +1,28 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  width: 225px;
-  height: 60px;
+  height: 50px;
 }
 
 .logo-wrap {
   display: flex;
-  align-items: center;
   max-width: 225px;
-  height: 80px;
-  background-color: $dark;
+  height: 60px;
   box-sizing: border-box;
-  border-bottom: 1px solid $gray;
+  position: relative;
+}
+
+.logo_with_name {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.1em;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

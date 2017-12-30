@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 import { loadState, saveState } from "./localStorage";
 import throttle from "lodash.throttle";
+import omit from "lodash.omit";
 
 export default function() {
   const composeEnhancers =
@@ -22,7 +23,8 @@ export default function() {
 
   store.subscribe(
     throttle(() => {
-      saveState(store.getState());
+      const state = omit(store.getState(), "userinterface");
+      saveState(state);
     }, 1000)
   );
 

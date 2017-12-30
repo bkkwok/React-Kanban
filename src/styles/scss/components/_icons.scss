@@ -20,3 +20,15 @@
   height: 25px;
   padding: 5px;
 }
+
+.cancel-icon {
+  height: 12px;
+}
+
+.menu-icon {
+  height: 15px;
+
+  &:hover path {
+    fill: red;
+  }
+}

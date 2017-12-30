@@ -5,13 +5,26 @@
   flex-shrink: 0;
   box-sizing: border-box;
   background-color: $dark;
+  transition: .5s;
+
+  &.isCollapsed {
+    margin-left: -225px;
+  }
+}
+
+.boardlist__cancel-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  right: 8px;
+  padding: 0 5px;
 }
 
 .boardlist-title {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  padding: 45px 30px 0;
+  padding: 25px 30px 0;
 }
 
 .boardlist__input {

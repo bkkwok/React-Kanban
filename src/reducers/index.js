@@ -2,11 +2,13 @@ import { combineReducers } from "redux";
 import boards, * as fromBoards from "./boards";
 import columns, * as fromColumns from "./columns";
 import tasks, * as fromTasks from "./tasks";
+import userinterface, * as fromUserInterface from "./userinterface";
 
 export default combineReducers({
   boards,
   columns,
-  tasks
+  tasks,
+  userinterface
 });
 
 function isEmpty(obj) {
@@ -32,3 +34,6 @@ export const tasksPerColumnSelector = (state, colId) => {
     .getColumn(state, colId)
     .tasks.map(taskId => fromTasks.getTask(state, taskId));
 };
+
+export const getBoardListState = state =>
+  fromUserInterface.getBoardListState(state.userinterface);
