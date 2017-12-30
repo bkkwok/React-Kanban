@@ -101,8 +101,8 @@ class Task extends Component {
           </DropDownBtn>
           {isDropDownActive && (
             <DropDown closeDropDown={this.hideDropDown} xPos={xPos} yPos={yPos}>
-              <DropDownLink onClick={this.handleDelete}>Delete</DropDownLink>
               <DropDownLink onClick={this.showEdit}>Edit</DropDownLink>
+              <DropDownLink onClick={this.handleDelete}>Delete</DropDownLink>
             </DropDown>
           )}
         </div>
