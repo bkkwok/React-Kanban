@@ -641,6 +641,7 @@ input {
 
 .task {
   position: relative;
+  cursor: grab;
   background-color: #fff;
   min-height: 75px;
   margin-bottom: 10px;
@@ -653,6 +654,8 @@ input {
     border-left: 7px solid #00b300; }
   .task.task_priority-high {
     border-left: 7px solid #ff3333; }
+  .task.isDragging {
+    opacity: 0; }
 
 .task__timestamp {
   color: #ccc;

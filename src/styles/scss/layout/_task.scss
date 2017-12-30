@@ -1,5 +1,6 @@
 .task {
   position: relative;
+  cursor: grab;
   background-color: #fff;
   min-height: 75px;
   margin-bottom: 10px;
@@ -19,6 +20,10 @@
 
   &.task_priority-high {
     border-left: 7px solid $red;
+  }
+
+  &.isDragging {
+    opacity: 0;
   }
 }
 

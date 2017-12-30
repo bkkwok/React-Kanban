@@ -10,6 +10,8 @@ import ArrowIcon from "../assets/ArrowIcon";
 import { DragSource } from "react-dnd";
 import { ItemTypes } from "../Constants";
 import omit from "lodash.omit";
+import { getEmptyImage } from "react-dnd-html5-backend";
+import cn from 'classnames';
 
 class Task extends Component {
   state = {
@@ -52,10 +54,24 @@ class Task extends Component {
     this.setState({ isDropDownActive: false, xPos: 0, yPos: 0 });
   };
 
+  setWrapperRef = node => {
+    this.wrapperRef = node;
+  }
+
+  componentDidMount() {
+    // Use empty image as a drag preview so browsers don't draw it
+    // and we can draw whatever we want on the custom drag layer instead.
+    this.props.connectDragPreview(getEmptyImage(), {
+      // IE fallback: specify that we'd rather screenshot the node
+      // when it already knows it's being dragged so we can hide it with CSS.
+      captureDraggingState: true
+    });
+  }
+
   render() {
     const { isEditting, isDropDownActive, xPos, yPos } = this.state;
-    const { task, priority, timestamp, connectDragSource } = this.props;
-    const classes = `task task_priority-${priority}`;
+    const { task, priority, timestamp, connectDragSource, isDragging } = this.props;
+    const classes = cn('task', `task_priority-${priority}`, {isDragging: isDragging});
 
     return isEditting ? (
       <TaskForm
@@ -65,7 +81,7 @@ class Task extends Component {
       />
     ) : (
       connectDragSource(
-        <div className={classes}>
+        <div className={classes} ref={this.setWrapperRef}>
           <div className="task__timestamp">{timestamp}</div>
           <div className="task__task">{task}</div>
           <DropDownBtn className="task__dropdown" onClick={this.showDropDown}>
@@ -79,15 +95,22 @@ class Task extends Component {
           )}
         </div>
       )
-    );
+    )
   }
 }
 
 const dragSource = {
   beginDrag: function(props, monitor, component) {
+    const { width, height } = component.wrapperRef.getBoundingClientRect();
+
     return {
       fromColumnId: props.colId,
-      taskId: props.id
+      taskId: props.id,
+      priority: props.priority,
+      task: props.task,
+      timestamp: props.timestamp,
+      width: width,
+      height: height
     };
   },
   endDrag: function(props, monitor, component) {
@@ -97,7 +120,7 @@ const dragSource = {
 
     const { fromColumnId, toColumnId, taskId } = monitor.getDropResult();
 
-    if(fromColumnId === toColumnId) return;
+    if (fromColumnId === toColumnId) return;
 
     props.moveTask(fromColumnId, toColumnId, taskId);
   }
@@ -108,6 +131,8 @@ export const mapDispatchToProps = dispatch =>
 
 export default connect(null, mapDispatchToProps)(
   DragSource(ItemTypes.TASK, dragSource, (connect, monitor) => ({
-    connectDragSource: connect.dragSource()
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging()
   }))(Task)
 );
