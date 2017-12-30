@@ -1,13 +1,12 @@
 import { ADD_TASK, DEL_TASK, EDIT_TASK } from "./types";
-
-let currentId = 1;
+import uuidv4 from "uuid/v4";
 
 export function addTask(columnId, task, priority) {
   return {
     type: ADD_TASK,
     columnId: columnId,
     task: {
-      id: ++currentId,
+      id: uuidv4(),
       task: task,
       priority: priority,
       timestamp: new Date(Date.now()).toLocaleDateString()
@@ -31,5 +30,5 @@ export function editTask(id, task, priority) {
       task: task,
       priority: priority
     }
-  }
+  };
 }

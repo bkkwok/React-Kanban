@@ -1,13 +1,12 @@
 import { ADD_COLUMN, DEL_COLUMN, EDIT_COLUMN } from "./types";
-
-let currentId = 1;
+import uuidv4 from 'uuid/v4';
 
 export function addColumn(boardId, name) {
   return {
     type: ADD_COLUMN,
     boardId: boardId,
     column: {
-      id: ++currentId,
+      id: uuidv4(),
       name: name,
       tasks: []
     }

@@ -1,8 +1,10 @@
+import { createDefaultState } from './defaultState';
+
 export function loadState() {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
-      return undefined;
+      return createDefaultState();
     } else {
       return JSON.parse(serializedState);
     }

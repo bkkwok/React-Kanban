@@ -8,20 +8,7 @@ import {
 } from "../actions/types";
 import omit from "lodash.omit";
 
-const defaultState = {
-  "0": {
-    id: 0,
-    name: "inProgress",
-    tasks: []
-  },
-  "1": {
-    id: 1,
-    name: "ToDo",
-    tasks: []
-  }
-};
-
-export default function columns(state = defaultState, action) {
+export default function columns(state = {}, action) {
   switch (action.type) {
     case DEL_BOARD:
       return omit(state, action.columnIds);

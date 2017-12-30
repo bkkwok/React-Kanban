@@ -7,15 +7,7 @@ import {
 } from "../actions/types";
 import omit from "lodash.omit";
 
-const initialState = {
-  "0": {
-    id: 0,
-    name: "Untitled board",
-    columns: [0, 1]
-  }
-};
-
-export default function boards(state = initialState, action) {
+export default function boards(state = {}, action) {
   switch (action.type) {
     case ADD_BOARD:
       return { ...state, [action.board.id]: { ...action.board } };
