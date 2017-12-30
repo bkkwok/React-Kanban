@@ -21,6 +21,10 @@ class TextArea extends Component {
     this.textArea.addEventListener("input", this.resizeTextArea, false);
   }
 
+  componentWillUnmount() {
+    this.textArea.removeEventListener("input", this.resizeTextArea, false);
+  }
+
   resizeTextArea() {
     const { scrollHeight, scrollTop } = this.textArea;
 
