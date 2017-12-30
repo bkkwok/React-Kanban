@@ -4,7 +4,8 @@ import {
   DEL_COLUMN,
   EDIT_COLUMN,
   ADD_TASK,
-  DEL_TASK
+  DEL_TASK,
+  MOVE_TASK
 } from "../actions/types";
 import reducer from "./columns";
 import omit from "lodash.omit";
@@ -101,6 +102,30 @@ describe("Column Reducer", function() {
     const expected = Object.assign(createState(), {
       "1": { id: 1, name: "inProgress", tasks: [1] }
     });
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("MOVE_TASK action should remove taskId from 'fromColumnId' and place in 'toColumnId'", function() {
+    const actual = reducer(createState(), {
+      type: MOVE_TASK,
+      fromColumnId: 1,
+      toColumnId: 2,
+      taskId: 1
+    });
+
+    const expected = {
+      "1": {
+        id: 1,
+        name: "inProgress",
+        tasks: [2]
+      },
+      "2": {
+        id: 2,
+        name: "done",
+        tasks: [3, 4, 1]
+      }
+    };
 
     expect(actual).toEqual(expected);
   });

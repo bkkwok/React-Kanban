@@ -40,4 +40,13 @@ describe("task actions", function() {
       }
     });
   });
+
+  it("moveTask", function() {
+    expect(action.moveTask(1, 2, 2)).toEqual({
+      type: TYPE.MOVE_TASK,
+      fromColumnId: 1,
+      toColumnId: 2,
+      taskId: 2
+    });
+  });
 });

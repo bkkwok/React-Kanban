@@ -1,4 +1,4 @@
-import { ADD_TASK, DEL_TASK, EDIT_TASK } from "./types";
+import { ADD_TASK, DEL_TASK, EDIT_TASK, MOVE_TASK } from "./types";
 import uuidv4 from "uuid/v4";
 
 export function addTask(columnId, task, priority) {
@@ -30,5 +30,14 @@ export function editTask(id, task, priority) {
       task: task,
       priority: priority
     }
+  };
+}
+
+export function moveTask(fromColumnId, toColumnId, taskId) {
+  return {
+    type: MOVE_TASK,
+    fromColumnId: fromColumnId,
+    toColumnId: toColumnId,
+    taskId: taskId
   };
 }
