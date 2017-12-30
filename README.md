@@ -1,4 +1,8 @@
-Kanban board made with React.
-Create multiple boards, filter keywords, and prioritize tasks.
+# Kanban board made with React and Redux.
+### Create multiple boards, filter keywords, drag and drop and prioritize tasks.
 
-LiveDemo: https://react-kanban-app.herokuapp.com/boards
+#### LiveDemo: https://react-kanban-app.herokuapp.com/boards
+
+## Upcoming Features
+* Mobile Friendly Drag and Drop and ViewPort
+* Board, Task, and Column Filter
