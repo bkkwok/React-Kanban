@@ -684,7 +684,8 @@ input {
 .task__task {
   font-weight: 600;
   white-space: pre-wrap;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  padding-bottom: 10px; }
 
 .task__dropdown {
   position: absolute;
