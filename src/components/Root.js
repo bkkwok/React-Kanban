@@ -3,7 +3,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import { DragDropContext } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
+import MultiBackend from 'react-dnd-multi-backend';
+import HTML5toTouch from 'react-dnd-multi-backend/lib/HTML5toTouch';
 
 class Root extends Component {
   render() {
@@ -19,4 +20,4 @@ class Root extends Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(Root);
+export default DragDropContext(MultiBackend(HTML5toTouch))(Root);
