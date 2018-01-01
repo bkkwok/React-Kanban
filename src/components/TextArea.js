@@ -47,7 +47,7 @@ class TextArea extends Component {
   }
 
   render() {
-    return <textarea ref={el => (this.textArea = el)} {...this.props} />
+    return <textarea onFocus={this.setCursorAtEnd} ref={el => (this.textArea = el)} {...this.props} />
   }
 }
 
