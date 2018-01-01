@@ -496,15 +496,15 @@ input {
   align-items: center; }
 
 .search-icon {
-  height: 30px;
-  margin-left: 2em; }
+  height: 25px;
+  margin-left: 1.3em; }
 
 .search-input {
   border: none;
   outline: none;
   width: 600px;
   font-size: 1.1em;
-  margin-left: 1em; }
+  margin-left: .5em; }
 
 .search-input::placeholder {
   color: #d9d9d9; }
@@ -730,12 +730,17 @@ input {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 50px; }
+  padding: 50px;
+  justify-content: space-around; }
+  @media (min-width: 575px) {
+    .card_container {
+      justify-content: flex-start; } }
 
 .card {
   position: relative;
   cursor: pointer;
   width: 20%;
+  min-width: 220px;
   min-height: 100px;
   box-sizing: border-box;
   padding: 40px 30px;
@@ -815,9 +820,7 @@ input {
   margin-left: 20px;
   display: flex;
   align-items: center;
-  padding: 5px;
-  border-radius: 3px;
-  border: 2px solid black; }
+  padding: 5px; }
 
 .btn-icon {
   cursor: pointer;
@@ -842,7 +845,7 @@ input {
   height: 12px; }
 
 .menu-icon {
-  height: 15px; }
+  height: 20px; }
   .menu-icon:hover path {
     fill: red; }
 

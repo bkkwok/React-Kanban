@@ -3,18 +3,26 @@
   align-items: flex-start;
   flex-wrap: wrap;
   padding: 50px;
+  justify-content: space-around;
+
+  @media(min-width: 575px) {
+    justify-content: flex-start;
+  }
 }
 
 .card {
   position: relative;
   cursor: pointer;
   width: 20%;
+  min-width: 220px;
   min-height: 100px;
   box-sizing: border-box;
   padding: 40px 30px;
   margin: 0 16px 16px 0;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
   background-color: #fff;
+
+
 }
 
 .card-goTo {
