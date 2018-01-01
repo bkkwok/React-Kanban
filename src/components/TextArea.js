@@ -34,6 +34,18 @@ class TextArea extends Component {
     window.scrollTo(window.scrollLeft, scrollTop + scrollHeight);
   }
 
+  setCursorAtEnd = e => {
+    const el = e.target;
+
+    if(el.setSelectionRange) {
+      const len = el.value.length * 2;
+
+      setTimeout(function() {
+        el.setSelectionRange(len, len);
+      }, 1)
+    }
+  }
+
   render() {
     return <textarea ref={el => (this.textArea = el)} {...this.props} />
   }

@@ -66,14 +66,26 @@ class Input extends Component {
     this.wrapperRef = node;
   }
 
+  setCursorAtEnd = e => {
+    const el = e.target;
+
+    if(el.setSelectionRange) {
+      const len = el.value.length * 2;
+
+      setTimeout(function() {
+        el.setSelectionRange(len, len);
+      })
+    }
+  }
+
   render() {
     return (
       <input
         {...this.getProps()}
+        onFocus={this.setCursorAtEnd}
         value={this.state.value}
         onChange={this.handleChange}
         onKeyUp={this.handleSubmit}
-        onClick={e => e.stopPropagation()}
         ref={this.setWrapperRef}
       />
     );
