@@ -502,7 +502,7 @@ input {
 .search-input {
   border: none;
   outline: none;
-  width: 600px;
+  width: 75%;
   font-size: 1.1em;
   margin-left: .5em; }
 
