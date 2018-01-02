@@ -4,6 +4,9 @@ import AddColumn from "./AddColumn";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { boardSelector, columnsPerBoardSelector } from "../reducers";
+import withScrolling from 'react-dnd-scrollzone';
+
+const ScrollingComponent = withScrolling('div');
 
 class BoardView extends Component {
   constructor() {
@@ -30,7 +33,7 @@ class BoardView extends Component {
     }
 
     return (
-      <div className="boardview">
+      <ScrollingComponent className="boardview">
         <div className="boardview__header">
           <div className="boardview__name">{board.name}</div>
         </div>
@@ -38,7 +41,7 @@ class BoardView extends Component {
           {this.renderColumns(columns)}
           <AddColumn boardId={board.id} />
         </div>
-      </div>
+      </ScrollingComponent>
     );
   }
 }
