@@ -1,6 +1,6 @@
 import * as TYPE from "../actions/types";
 
-const initialState = { isBoardListCollapsed: false };
+const initialState = { isBoardListCollapsed: window.innerWidth > 520 ? false : true };
 
 export default function userinterface(state = initialState, action) {
   switch (action.type) {
